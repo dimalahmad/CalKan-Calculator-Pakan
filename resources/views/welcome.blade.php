@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CalKan - Kalkulator Formula Pakan Ternak Mudah</title>
+    <title>CalKan - Kalkulator Formula Pakan Ternak</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;850&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS (via CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -24,30 +24,30 @@
         }
     </script>
 </head>
-<body class="bg-slate-100 text-slate-900 min-h-screen flex flex-col antialiased">
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
 
     <!-- Top Navigation Bar -->
-    <header class="bg-emerald-700 text-white shadow-md">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <header class="bg-gradient-to-r from-emerald-800 to-teal-800 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
             <div class="flex items-center gap-3">
-                <div class="bg-white text-emerald-700 p-2.5 rounded-lg font-black text-2xl shadow-sm">
-                    🐄
+                <div class="bg-white/10 p-2.5 rounded-xl text-2xl backdrop-blur-md shadow-inner">
+                    🌾
                 </div>
-                <div class="text-center sm:text-left">
-                    <h1 class="text-2xl font-bold tracking-tight">CalKan</h1>
-                    <p class="text-xs text-emerald-100 font-medium">Kalkulator Pakan Ternak Mandiri - Mudah & Praktis</p>
+                <div class="text-center md:text-left">
+                    <h1 class="text-2xl font-extrabold tracking-tight">CalKan</h1>
+                    <p class="text-xs text-emerald-100/90 font-medium">Kalkulator Pakan Ternak Mandiri • Premium & Praktis</p>
                 </div>
             </div>
 
-            <!-- Tab Buttons - Big & Clear -->
-            <nav class="flex bg-emerald-800/50 p-1 rounded-xl border border-emerald-600">
-                <button onclick="switchTab('calculator')" id="btn-tab-calculator" class="tab-btn px-5 py-2.5 text-sm font-bold rounded-lg transition-all duration-150 bg-white text-emerald-800 shadow">
-                    📊 Mulai Hitung Pakan
+            <!-- Tab Buttons - Big, Premium & Clear -->
+            <nav class="flex bg-emerald-950/40 p-1.5 rounded-xl border border-emerald-600/30">
+                <button onclick="switchTab('calculator')" id="btn-tab-calculator" class="tab-btn px-5 py-2.5 text-sm font-bold rounded-lg transition-all duration-150 bg-white text-emerald-900 shadow-md">
+                    📊 Mulai Hitung
                 </button>
-                <button onclick="switchTab('ingredients')" id="btn-tab-ingredients" class="tab-btn px-5 py-2.5 text-sm font-bold rounded-lg transition-all duration-150 text-white hover:bg-emerald-600/50">
+                <button onclick="switchTab('ingredients')" id="btn-tab-ingredients" class="tab-btn px-5 py-2.5 text-sm font-bold rounded-lg transition-all duration-150 text-emerald-100 hover:text-white hover:bg-emerald-700/50">
                     🌾 Data Bahan Pakan
                 </button>
-                <button onclick="switchTab('livestock')" id="btn-tab-livestock" class="tab-btn px-5 py-2.5 text-sm font-bold rounded-lg transition-all duration-150 text-white hover:bg-emerald-600/50">
+                <button onclick="switchTab('livestock')" id="btn-tab-livestock" class="tab-btn px-5 py-2.5 text-sm font-bold rounded-lg transition-all duration-150 text-emerald-100 hover:text-white hover:bg-emerald-700/50">
                     🐄 Standar Ternak
                 </button>
             </nav>
@@ -55,106 +55,106 @@
     </header>
 
     <!-- Main Content Area -->
-    <main class="flex-1 max-w-6xl w-full mx-auto px-4 py-6">
+    <main class="flex-1 max-w-6xl w-full mx-auto px-4 py-8">
 
         <!-- ==================== TAB: CALCULATOR ==================== -->
         <div id="tab-calculator" class="tab-content space-y-6">
             
-            <!-- Panduan Singkat Banner -->
-            <div class="bg-white border-l-8 border-emerald-600 rounded-r-xl p-5 shadow-sm space-y-1">
-                <h3 class="text-base font-bold text-emerald-800">Cara Penggunaan Kalkulator:</h3>
-                <ol class="list-decimal list-inside text-sm text-slate-700 space-y-1">
-                    <li>Pilih <strong>Jenis Ternak</strong> dan tentukan <strong>Total Berat Pakan (KG)</strong> pada Langkah 1.</li>
-                    <li>Pilih <strong>Bahan Pakan</strong> dan tentukan porsi <strong>Persentase (%)</strong> campuran pada Langkah 2.</li>
-                    <li>Pastikan total persentase campuran tepat <strong>100%</strong>.</li>
-                    <li>Lihat hasil kecukupan nutrisi dan total harga di Langkah 3.</li>
-                </ol>
+            <!-- Panduan Banner -->
+            <div class="bg-emerald-50/60 border border-emerald-250 rounded-2xl p-5 shadow-sm flex items-start gap-4">
+                <div class="text-3xl text-emerald-800 hidden sm:block">💡</div>
+                <div class="space-y-1">
+                    <h3 class="text-base font-extrabold text-emerald-900">Petunjuk Cepat Penggunaan Kalkulator:</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Silakan ikuti <strong>Langkah 1</strong> (pilih ternak), lalu isi persentase bahan pakan di <strong>Langkah 2</strong> sampai total persentase di kanan menjadi <strong>100%</strong>. Hasil analisa gizi dan estimasi biaya pakan akan keluar otomatis di <strong>Langkah 3</strong>.
+                    </p>
+                </div>
             </div>
 
             <!-- Grid Layout for Inputs & Outputs -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
                 
                 <!-- Left Column: Step 1 & Step 2 (7 cols) -->
                 <div class="lg:col-span-7 space-y-6">
                     
                     <!-- LANGKAH 1: Ternak & Berat -->
-                    <div class="bg-white border-2 border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-5">
                         <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
-                            <span class="text-emerald-700 text-xl font-bold">Langkah 1:</span>
-                            <h2 class="text-lg font-bold text-slate-950">Pilih Jenis Ternak & Berat Pakan</h2>
+                            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 font-extrabold text-sm shadow-sm">1</span>
+                            <h2 class="text-lg font-bold text-slate-900">Pilih Jenis Ternak & Berat Pakan</h2>
                         </div>
                         
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                             <!-- Select Ternak -->
                             <div>
-                                <label for="select-ternak" class="block text-sm font-bold text-slate-700 mb-2">Jenis Ternak Anda:</label>
-                                <select id="select-ternak" onchange="onTernakChange()" class="w-full bg-white border-2 border-slate-350 rounded-xl px-4 py-3 text-base text-slate-800 font-medium focus:ring-2 focus:ring-emerald-600/20 focus:border-emerald-700 focus:outline-none">
+                                <label for="select-ternak" class="block text-sm font-bold text-slate-650 mb-2">Jenis Ternak Anda:</label>
+                                <select id="select-ternak" onchange="onTernakChange()" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-base text-slate-800 font-semibold focus:ring-2 focus:ring-emerald-600/20 focus:border-emerald-700 focus:outline-none transition-all shadow-xs">
                                     <option value="">-- Silakan Pilih Ternak --</option>
                                 </select>
                             </div>
                             
                             <!-- Input Weight -->
                             <div>
-                                <label for="input-weight" class="block text-sm font-bold text-slate-700 mb-2">Total Berat Campuran Yang Ingin Dibuat:</label>
+                                <label for="input-weight" class="block text-sm font-bold text-slate-650 mb-2">Total Berat Campuran Pakan:</label>
                                 <div class="relative">
-                                    <input type="number" id="input-weight" value="100" min="1" step="any" oninput="calculateFeed()" class="w-full bg-white border-2 border-slate-350 rounded-xl pl-4 pr-16 py-3 text-base text-slate-850 font-bold focus:ring-2 focus:ring-emerald-600/20 focus:border-emerald-700 focus:outline-none">
-                                    <span class="absolute right-4 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-500">KG</span>
+                                    <input type="number" id="input-weight" value="100" min="1" step="any" oninput="calculateFeed()" class="w-full bg-white border border-slate-300 rounded-xl pl-4 pr-16 py-3 text-base text-slate-900 font-black focus:ring-2 focus:ring-emerald-600/20 focus:border-emerald-700 focus:outline-none transition-all shadow-xs">
+                                    <span class="absolute right-4 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-400">KG</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Mini Livestock Requirement Card -->
-                        <div id="ternak-req-card" class="hidden bg-emerald-50 rounded-xl p-4 border border-emerald-250 space-y-3">
-                            <h3 class="text-sm font-bold text-emerald-800">Target Nutrisi Minimal untuk Ternak Anda:</h3>
+                        <!-- Mini Requirement Card -->
+                        <div id="ternak-req-card" class="hidden bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-3">
+                            <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider">Target Minimal Nutrisi Ternak:</h3>
                             <div class="grid grid-cols-4 sm:grid-cols-7 gap-2 text-center text-xs">
-                                <div class="bg-white rounded-lg p-2 border border-emerald-100 shadow-xs">
-                                    <p class="text-slate-500 font-bold">Bahan Kering</p>
+                                <div class="bg-white rounded-lg p-2 border border-slate-200/60 shadow-xs">
+                                    <p class="text-slate-400 font-semibold">BK (%)</p>
                                     <p id="req-BK" class="text-sm font-bold text-slate-800">-</p>
                                 </div>
-                                <div class="bg-white rounded-lg p-2 border border-emerald-100 shadow-xs">
-                                    <p class="text-slate-500 font-bold">Protein Kasar</p>
+                                <div class="bg-white rounded-lg p-2 border border-slate-200/60 shadow-xs">
+                                    <p class="text-slate-400 font-semibold">PK (%)</p>
                                     <p id="req-PK" class="text-sm font-bold text-slate-800">-</p>
                                 </div>
-                                <div class="bg-white rounded-lg p-2 border border-emerald-100 shadow-xs">
-                                    <p class="text-slate-500 font-bold">Lemak Kasar</p>
+                                <div class="bg-white rounded-lg p-2 border border-slate-200/60 shadow-xs">
+                                    <p class="text-slate-400 font-semibold">LK (%)</p>
                                     <p id="req-LK" class="text-sm font-bold text-slate-800">-</p>
                                 </div>
-                                <div class="bg-white rounded-lg p-2 border border-emerald-100 shadow-xs">
-                                    <p class="text-slate-500 font-bold">Abu/Mineral</p>
+                                <div class="bg-white rounded-lg p-2 border border-slate-200/60 shadow-xs">
+                                    <p class="text-slate-400 font-semibold">Abu (%)</p>
                                     <p id="req-Abu" class="text-sm font-bold text-slate-800">-</p>
                                 </div>
-                                <div class="bg-white rounded-lg p-2 border border-emerald-100 shadow-xs">
-                                    <p class="text-slate-500 font-bold">Kalsium (Ca)</p>
+                                <div class="bg-white rounded-lg p-2 border border-slate-200/60 shadow-xs">
+                                    <p class="text-slate-400 font-semibold">Ca (%)</p>
                                     <p id="req-Ca" class="text-sm font-bold text-slate-800">-</p>
                                 </div>
-                                <div class="bg-white rounded-lg p-2 border border-emerald-100 shadow-xs">
-                                    <p class="text-slate-500 font-bold">Fosfor (P)</p>
+                                <div class="bg-white rounded-lg p-2 border border-slate-200/60 shadow-xs">
+                                    <p class="text-slate-400 font-semibold">P (%)</p>
                                     <p id="req-P" class="text-sm font-bold text-slate-800">-</p>
                                 </div>
-                                <div class="bg-white rounded-lg p-2 border border-emerald-100 shadow-xs">
-                                    <p class="text-emerald-800 font-bold">Energi (TDN)</p>
-                                    <p id="req-TDN" class="text-sm font-bold text-emerald-700">-</p>
+                                <div class="bg-emerald-50 rounded-lg p-2 border border-emerald-100 shadow-xs">
+                                    <p class="text-emerald-700 font-bold">TDN (%)</p>
+                                    <p id="req-TDN" class="text-sm font-extrabold text-emerald-800">-</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- LANGKAH 2: Pemilihan Bahan -->
-                    <div class="bg-white border-2 border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
-                        <div class="flex items-center justify-between border-b border-slate-100 pb-3 flex-wrap gap-2">
+                    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                        <div class="flex items-center justify-between border-b border-slate-100 pb-3 flex-wrap gap-4">
                             <div class="flex items-center gap-3">
-                                <span class="text-emerald-700 text-xl font-bold">Langkah 2:</span>
-                                <h2 class="text-lg font-bold text-slate-950">Atur Campuran Bahan Pakan</h2>
+                                <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 font-extrabold text-sm shadow-sm">2</span>
+                                <h2 class="text-lg font-bold text-slate-900">Atur Campuran Bahan Pakan</h2>
                             </div>
                             
-                            <!-- Row Adder/Remover Buttons - Large and Simple -->
-                            <div class="flex items-center gap-2">
-                                <button onclick="decrementRows()" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold px-4 py-2 rounded-xl text-base border border-slate-300 transition-colors shadow-xs">
-                                    ➖ Kurang Bahan
+                            <!-- Row Controls -->
+                            <div class="flex items-center bg-slate-100 border border-slate-200 rounded-xl p-1.5">
+                                <button onclick="decrementRows()" class="w-8 h-8 rounded-lg flex items-center justify-center bg-white border border-slate-250 hover:bg-slate-50 text-slate-600 transition-colors shadow-xs">
+                                    ➖
                                 </button>
-                                <span class="text-sm font-bold px-1" id="label-row-count">3 Bahan</span>
-                                <button onclick="incrementRows()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2 rounded-xl text-base transition-colors shadow-xs">
-                                    ➕ Tambah Bahan
+                                <span class="text-sm font-extrabold px-3 text-slate-800" id="label-row-count">3 Bahan</span>
+                                <button onclick="incrementRows()" class="w-8 h-8 rounded-lg flex items-center justify-center bg-emerald-600 hover:bg-emerald-750 text-white transition-colors shadow-xs">
+                                    ➕
                                 </button>
                             </div>
                         </div>
@@ -163,14 +163,14 @@
                         <div class="overflow-x-auto">
                             <table class="w-full text-left border-collapse">
                                 <thead>
-                                    <tr class="border-b border-slate-200 text-sm font-bold text-slate-650">
-                                        <th class="pb-3 pr-2 w-1/2">Nama Bahan Pakan</th>
-                                        <th class="pb-3 px-2 w-28 text-center">Jumlah Porsi (%)</th>
-                                        <th class="pb-3 pl-2 w-36">Harga Beli (Rp/Kg)</th>
+                                    <tr class="border-b border-slate-200 text-xs font-bold text-slate-400 uppercase tracking-wider">
+                                        <th class="pb-3 pr-2">Bahan Pakan</th>
+                                        <th class="pb-3 px-2 w-32 text-center">Porsi (%)</th>
+                                        <th class="pb-3 pl-2 w-36">Harga (Rp/Kg)</th>
                                     </tr>
                                 </thead>
-                                <tbody id="feed-rows-container" class="divide-y divide-slate-150">
-                                    <!-- Dynamic rows injected here -->
+                                <tbody id="feed-rows-container" class="divide-y divide-slate-100">
+                                    <!-- Injected dynamically -->
                                 </tbody>
                             </table>
                         </div>
@@ -181,125 +181,124 @@
                 <div class="lg:col-span-5 space-y-6">
                     
                     <!-- LANGKAH 3: Hasil & Biaya -->
-                    <div class="bg-white border-2 border-slate-200 rounded-2xl p-6 shadow-sm space-y-6">
+                    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-6">
                         <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
-                            <span class="text-emerald-700 text-xl font-bold">Langkah 3:</span>
-                            <h2 class="text-lg font-bold text-slate-950">Hasil Formulasi & Biaya</h2>
+                            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 font-extrabold text-sm shadow-sm">3</span>
+                            <h2 class="text-lg font-bold text-slate-900">Hasil & Estimasi Biaya</h2>
                         </div>
 
-                        <!-- Progress Bar for total percentage -->
-                        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-2">
+                        <!-- Progress Bar -->
+                        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4.5 space-y-2.5">
                             <div class="flex justify-between items-center text-sm font-bold">
-                                <span class="text-slate-600">Total Persentase Campuran:</span>
-                                <span id="total-percent-badge" class="px-3 py-1 rounded-lg bg-red-50 text-red-700 font-extrabold border border-red-200 text-base">0%</span>
+                                <span class="text-slate-650">Total Formulasi:</span>
+                                <span id="total-percent-badge" class="px-2.5 py-1 rounded-lg bg-red-50 text-red-700 font-black border border-red-200 text-base">0%</span>
                             </div>
-                            <div class="w-full bg-slate-200 h-4 rounded-full overflow-hidden border border-slate-300">
+                            <div class="w-full bg-slate-200 h-3 rounded-full overflow-hidden border border-slate-300">
                                 <div id="total-percent-bar" class="h-full bg-red-500 transition-all duration-200" style="width: 0%"></div>
                             </div>
-                            <p id="total-percent-warning" class="text-xs text-red-700 font-bold bg-red-50 p-2 rounded-lg border border-red-150">
-                                ⚠️ PENTING: Porsi campuran harus pas 100%! Silakan sesuaikan kembali persentase bahan di Langkah 2.
+                            <p id="total-percent-warning" class="text-xs text-red-750 font-bold bg-red-50/50 p-2.5 rounded-lg border border-red-200/60 leading-relaxed">
+                                ⚠️ Campuran belum genap 100%! Silakan sesuaikan lagi porsi (%) bahan pakan Anda.
                             </p>
                         </div>
 
-                        <!-- Cost Summary - Big Font Sizes for Boomers -->
+                        <!-- Pricing Cards -->
                         <div class="grid grid-cols-1 gap-3">
-                            <div class="bg-emerald-50 border-2 border-emerald-200 rounded-xl p-4 text-center">
-                                <p class="text-xs font-bold text-emerald-800 uppercase tracking-wider">Estimasi Harga Pakan per KG</p>
+                            <div class="bg-emerald-50/50 border border-emerald-200 rounded-2xl p-4 text-center">
+                                <p class="text-[10px] font-bold text-emerald-850 uppercase tracking-wider">Harga Pakan per KG</p>
                                 <p id="cost-per-kg" class="text-2xl font-black text-slate-900 mt-1">Rp 0</p>
                             </div>
-                            <div class="bg-slate-50 border-2 border-slate-200 rounded-xl p-4 text-center">
-                                <p class="text-xs font-bold text-slate-600 uppercase tracking-wider">Total Biaya Pembuatan Pakan</p>
+                            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-center">
+                                <p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Total Biaya Pembuatan</p>
                                 <p id="total-cost" class="text-2xl font-black text-emerald-700 mt-1">Rp 0</p>
                             </div>
                         </div>
 
-                        <!-- Ingredient mix breakdown list -->
+                        <!-- Breakdown list -->
                         <div class="space-y-3">
-                            <h3 class="text-sm font-bold text-slate-700">Rincian Timbangan Campuran:</h3>
+                            <h3 class="text-xs font-bold text-slate-550 uppercase tracking-wider">Timbangan Campuran:</h3>
                             <div id="breakdown-container" class="space-y-2 max-h-56 overflow-y-auto pr-1">
-                                <p class="text-sm text-slate-500 italic text-center py-4 bg-slate-50 rounded-xl border border-slate-200">Belum ada bahan pakan yang dipilih.</p>
+                                <p class="text-sm text-slate-450 italic text-center py-4 bg-slate-50 border border-slate-200 rounded-xl">Belum ada bahan pakan.</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Comparison Table: Nutrient Profile vs Targets -->
-                    <div class="bg-white border-2 border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
-                        <h2 class="text-base font-bold text-slate-950 border-b border-slate-100 pb-3">🎯 Cek Kecukupan Gizi Pakan</h2>
+                    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                        <h2 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">🎯 Hasil Analisa Nutrisi</h2>
 
                         <div class="overflow-x-auto">
                             <table class="w-full text-center text-sm">
                                 <thead>
-                                    <tr class="border-b border-slate-200 text-slate-500 font-bold">
-                                        <th class="pb-2 text-left">Parameter Gizi</th>
-                                        <th class="pb-2">Kadar Hasil</th>
-                                        <th class="pb-2">Target Minimal</th>
+                                    <tr class="border-b border-slate-200 text-slate-400 font-bold">
+                                        <th class="pb-2 text-left">Nutrisi</th>
+                                        <th class="pb-2">Hasil</th>
+                                        <th class="pb-2">Target</th>
                                         <th class="pb-2">Status</th>
                                     </tr>
                                 </thead>
                                 <tbody id="nutrient-comparison-tbody" class="divide-y divide-slate-100">
-                                    <!-- BK, PK, LK, Abu, Ca, P, TDN comparison rows -->
                                     <tr class="hover:bg-slate-50">
                                         <td class="py-3 text-left">
-                                            <span class="font-bold text-slate-900 block">Bahan Kering (BK)</span>
-                                            <span class="text-xs text-slate-500 block">Menentukan kekenyangan ternak</span>
+                                            <span class="font-bold text-slate-800 block">Bahan Kering (BK)</span>
+                                            <span class="text-[10px] text-slate-400 block">Total bahan padat bebas air</span>
                                         </td>
-                                        <td id="res-BK" class="font-bold text-slate-800">0.00%</td>
-                                        <td id="tar-BK" class="text-slate-500 font-medium">0.00%</td>
-                                        <td><span id="diff-BK" class="px-2 py-1 rounded bg-slate-150 text-slate-600 font-bold border border-slate-200 text-xs">Belum Ada Target</span></td>
+                                        <td id="res-BK" class="font-bold text-slate-700">0.00%</td>
+                                        <td id="tar-BK" class="text-slate-400">0.00%</td>
+                                        <td><span id="diff-BK" class="inline-block px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-500 border border-slate-200">Belum Ada Target</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50">
                                         <td class="py-3 text-left">
-                                            <span class="font-bold text-slate-900 block">Protein Kasar (PK)</span>
-                                            <span class="text-xs text-slate-500 block">Untuk pertumbuhan daging & susu</span>
+                                            <span class="font-bold text-slate-800 block">Protein Kasar (PK)</span>
+                                            <span class="text-[10px] text-slate-400 block">Pertumbuhan & produksi susu</span>
                                         </td>
-                                        <td id="res-PK" class="font-bold text-slate-800">0.00%</td>
-                                        <td id="tar-PK" class="text-slate-500 font-medium">0.00%</td>
-                                        <td><span id="diff-PK" class="px-2 py-1 rounded bg-slate-150 text-slate-600 font-bold border border-slate-200 text-xs">Belum Ada Target</span></td>
+                                        <td id="res-PK" class="font-bold text-slate-700">0.00%</td>
+                                        <td id="tar-PK" class="text-slate-400">0.00%</td>
+                                        <td><span id="diff-PK" class="inline-block px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-500 border border-slate-200">Belum Ada Target</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50">
                                         <td class="py-3 text-left">
-                                            <span class="font-bold text-slate-900 block">Lemak Kasar (LK)</span>
-                                            <span class="text-xs text-slate-500 block">Sumber energi sekunder</span>
+                                            <span class="font-bold text-slate-800 block">Lemak Kasar (LK)</span>
+                                            <span class="text-[10px] text-slate-400 block">Energi & kesehatan sel</span>
                                         </td>
-                                        <td id="res-LK" class="font-bold text-slate-800">0.00%</td>
-                                        <td id="tar-LK" class="text-slate-500 font-medium">0.00%</td>
-                                        <td><span id="diff-LK" class="px-2 py-1 rounded bg-slate-150 text-slate-600 font-bold border border-slate-200 text-xs">Belum Ada Target</span></td>
+                                        <td id="res-LK" class="font-bold text-slate-700">0.00%</td>
+                                        <td id="tar-LK" class="text-slate-400">0.00%</td>
+                                        <td><span id="diff-LK" class="inline-block px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-500 border border-slate-200">Belum Ada Target</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50">
                                         <td class="py-3 text-left">
-                                            <span class="font-bold text-slate-900 block">Kadar Abu / Mineral</span>
-                                            <span class="text-xs text-slate-500 block">Kadar abu pembentuk pakan</span>
+                                            <span class="font-bold text-slate-800 block">Mineral / Abu</span>
+                                            <span class="text-[10px] text-slate-400 block">Kandungan zat anorganik</span>
                                         </td>
-                                        <td id="res-Abu" class="font-bold text-slate-800">0.00%</td>
-                                        <td id="tar-Abu" class="text-slate-500 font-medium">0.00%</td>
-                                        <td><span id="diff-Abu" class="px-2 py-1 rounded bg-slate-150 text-slate-600 font-bold border border-slate-200 text-xs">Belum Ada Target</span></td>
+                                        <td id="res-Abu" class="font-bold text-slate-700">0.00%</td>
+                                        <td id="tar-Abu" class="text-slate-400">0.00%</td>
+                                        <td><span id="diff-Abu" class="inline-block px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-500 border border-slate-200">Belum Ada Target</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50">
                                         <td class="py-3 text-left">
-                                            <span class="font-bold text-slate-900 block">Kalsium (Ca)</span>
-                                            <span class="text-xs text-slate-500 block">Penting untuk tulang kuat</span>
+                                            <span class="font-bold text-slate-800 block">Kalsium (Ca)</span>
+                                            <span class="text-[10px] text-slate-400 block">Kekuatan struktur tulang</span>
                                         </td>
-                                        <td id="res-Ca" class="font-bold text-slate-800">0.00%</td>
-                                        <td id="tar-Ca" class="text-slate-500 font-medium">0.00%</td>
-                                        <td><span id="diff-Ca" class="px-2 py-1 rounded bg-slate-150 text-slate-600 font-bold border border-slate-200 text-xs">Belum Ada Target</span></td>
+                                        <td id="res-Ca" class="font-bold text-slate-700">0.00%</td>
+                                        <td id="tar-Ca" class="text-slate-400">0.00%</td>
+                                        <td><span id="diff-Ca" class="inline-block px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-500 border border-slate-200">Belum Ada Target</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50">
                                         <td class="py-3 text-left">
-                                            <span class="font-bold text-slate-900 block">Fosfor (P)</span>
-                                            <span class="text-xs text-slate-500 block">Membantu pembentukan sel tubuh</span>
+                                            <span class="font-bold text-slate-800 block">Fosfor (P)</span>
+                                            <span class="text-[10px] text-slate-400 block">Metabolisme zat gizi</span>
                                         </td>
-                                        <td id="res-P" class="font-bold text-slate-800">0.00%</td>
-                                        <td id="tar-P" class="text-slate-500 font-medium">0.00%</td>
-                                        <td><span id="diff-P" class="px-2 py-1 rounded bg-slate-150 text-slate-600 font-bold border border-slate-200 text-xs">Belum Ada Target</span></td>
+                                        <td id="res-P" class="font-bold text-slate-700">0.00%</td>
+                                        <td id="tar-P" class="text-slate-400">0.00%</td>
+                                        <td><span id="diff-P" class="inline-block px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-500 border border-slate-200">Belum Ada Target</span></td>
                                     </tr>
                                     <tr class="hover:bg-slate-50">
                                         <td class="py-3 text-left">
-                                            <span class="font-bold text-slate-900 block">Energi (TDN)</span>
-                                            <span class="text-xs text-slate-500 block">Energi utama kekuatan ternak</span>
+                                            <span class="font-bold text-slate-850 block">Energi (TDN)</span>
+                                            <span class="text-[10px] text-slate-400 block">Total kecernaan nutrien</span>
                                         </td>
-                                        <td id="res-TDN" class="font-bold text-slate-800">0.00%</td>
-                                        <td id="tar-TDN" class="text-slate-500 font-medium">0.00%</td>
-                                        <td><span id="diff-TDN" class="px-2 py-1 rounded bg-slate-150 text-slate-600 font-bold border border-slate-200 text-xs">Belum Ada Target</span></td>
+                                        <td id="res-TDN" class="font-bold text-slate-850">0.00%</td>
+                                        <td id="tar-TDN" class="text-slate-400">0.00%</td>
+                                        <td><span id="diff-TDN" class="inline-block px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-500 border border-slate-200">Belum Ada Target</span></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -311,22 +310,18 @@
 
         <!-- ==================== TAB: INGREDIENTS ==================== -->
         <div id="tab-ingredients" class="tab-content hidden space-y-6">
-            <div class="bg-white border-2 border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
                 <div class="flex items-center justify-between border-b border-slate-200 pb-4 flex-wrap gap-2">
                     <div class="flex items-center gap-2">
-                        <h2 class="text-xl font-bold text-slate-950">📋 Kandungan Gizi Bahan Pakan Lengkap</h2>
+                        <h2 class="text-xl font-bold text-slate-900">📋 Data Gizi Bahan Pakan Ternak</h2>
                     </div>
                     <!-- Live Loading Badge -->
-                    <span id="badge-api-ingredients" class="px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-250 animate-pulse">Menghubungkan Database API...</span>
+                    <span id="badge-api-ingredients" class="px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200 animate-pulse">Menghubungkan Database API...</span>
                 </div>
-
-                <p class="text-sm text-slate-600 bg-slate-50 p-3 rounded-lg border border-slate-200">
-                    💡 <strong>Tips Peternak:</strong> Tabel ini berisi standar nilai gizi bahan pakan. Anda dapat menggunakannya sebagai acuan memilih bahan pakan di kalkulator utama.
-                </p>
 
                 <div class="overflow-x-auto max-h-[60vh] overflow-y-auto">
                     <table class="w-full text-center text-sm border-collapse">
-                        <thead class="sticky top-0 bg-slate-200 border-b-2 border-slate-300 text-slate-800 font-bold text-xs z-10">
+                        <thead class="sticky top-0 bg-slate-100 border-b-2 border-slate-200 text-slate-650 font-bold text-xs z-10">
                             <tr>
                                 <th class="py-3 px-4 text-left">Nama Bahan</th>
                                 <th class="py-3 px-2">Bahan Kering (%)</th>
@@ -338,7 +333,7 @@
                                 <th class="py-3 px-2">Energi TDN (%)</th>
                             </tr>
                         </thead>
-                        <tbody id="ingredients-table-body" class="divide-y divide-slate-200 text-slate-700">
+                        <tbody id="ingredients-table-body" class="divide-y divide-slate-150 text-slate-700">
                             <!-- Injected by JS -->
                         </tbody>
                     </table>
@@ -348,22 +343,18 @@
 
         <!-- ==================== TAB: LIVESTOCK ==================== -->
         <div id="tab-livestock" class="tab-content hidden space-y-6">
-            <div class="bg-white border-2 border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
                 <div class="flex items-center justify-between border-b border-slate-200 pb-4 flex-wrap gap-2">
                     <div class="flex items-center gap-2">
-                        <h2 class="text-xl font-bold text-slate-950">📋 Standar Minimum Kebutuhan Gizi Ternak</h2>
+                        <h2 class="text-xl font-bold text-slate-900">📋 Standar Target Kebutuhan Gizi Ternak</h2>
                     </div>
                     <!-- Live Loading Badge -->
-                    <span id="badge-api-livestock" class="px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-250 animate-pulse">Menghubungkan Database API...</span>
+                    <span id="badge-api-livestock" class="px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200 animate-pulse">Menghubungkan Database API...</span>
                 </div>
-
-                <p class="text-sm text-slate-600 bg-slate-50 p-3 rounded-lg border border-slate-200">
-                    💡 <strong>Tips Peternak:</strong> Setiap jenis hewan ternak memiliki standar minimal zat gizi yang berbeda-beda agar mereka tumbuh sehat dan cepat gemuk.
-                </p>
 
                 <div class="overflow-x-auto max-h-[60vh] overflow-y-auto">
                     <table class="w-full text-center text-sm border-collapse">
-                        <thead class="sticky top-0 bg-slate-200 border-b-2 border-slate-300 text-slate-800 font-bold text-xs z-10">
+                        <thead class="sticky top-0 bg-slate-100 border-b-2 border-slate-200 text-slate-650 font-bold text-xs z-10">
                             <tr>
                                 <th class="py-3 px-4 text-left">Nama Ternak</th>
                                 <th class="py-3 px-2">Bahan Kering (%)</th>
@@ -375,7 +366,7 @@
                                 <th class="py-3 px-2">Energi TDN (%)</th>
                             </tr>
                         </thead>
-                        <tbody id="livestock-table-body" class="divide-y divide-slate-200 text-slate-700">
+                        <tbody id="livestock-table-body" class="divide-y divide-slate-150 text-slate-700">
                             <!-- Injected by JS -->
                         </tbody>
                     </table>
@@ -386,56 +377,56 @@
     </main>
 
     <!-- Footer -->
-    <footer class="border-t-2 border-slate-200 bg-white py-6 mt-12 text-center">
+    <footer class="border-t border-slate-200 bg-white py-6 mt-12 text-center text-xs text-slate-500">
         <div class="max-w-6xl mx-auto px-4 space-y-1">
-            <p class="text-sm font-bold text-slate-700">CalKan - Kalkulator Pakan Ternak Mudah & Praktis</p>
-            <p class="text-xs text-slate-500">Website ini aman & dapat dijalankan offline jika koneksi internet terputus.</p>
+            <p class="font-bold text-slate-700">CalKan • Aplikasi Pintar Peternak Mandiri</p>
+            <p>Database terhubung langsung dengan spreadsheet pertanian live.</p>
         </div>
     </footer>
 
     <!-- INGREDIENT DETAIL MODAL -->
     <div id="detail-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs hidden">
-        <div class="bg-white border-2 border-slate-300 w-full max-w-md rounded-2xl overflow-hidden shadow-2xl">
-            <div class="flex items-center justify-between p-6 border-b border-slate-200">
-                <h3 id="modal-title" class="text-base font-bold text-slate-900">Detail Kandungan</h3>
-                <button onclick="closeModal()" class="text-slate-500 hover:text-slate-800 transition-colors font-bold text-xl">
+        <div class="bg-white border border-slate-200 w-full max-w-md rounded-2xl overflow-hidden shadow-xl">
+            <div class="flex items-center justify-between p-6 border-b border-slate-155 bg-slate-50">
+                <h3 id="modal-title" class="text-base font-bold text-slate-900">Detail Gizi</h3>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-800 text-xl font-bold">
                     ✖
                 </button>
             </div>
             <div class="p-6 space-y-4">
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-slate-50 rounded-xl p-3 border border-slate-250">
-                        <p class="text-xs font-bold text-slate-500 uppercase">Bahan Kering (BK)</p>
-                        <p id="modal-BK" class="text-base font-black text-slate-900">-</p>
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div class="bg-slate-50 rounded-xl p-3 border border-slate-200">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase">Bahan Kering (BK)</p>
+                        <p id="modal-BK" class="text-base font-bold text-slate-800">-</p>
                     </div>
-                    <div class="bg-slate-50 rounded-xl p-3 border border-slate-250">
-                        <p class="text-xs font-bold text-slate-500 uppercase">Protein Kasar (PK)</p>
-                        <p id="modal-PK" class="text-base font-black text-slate-900">-</p>
+                    <div class="bg-slate-50 rounded-xl p-3 border border-slate-200">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase">Protein Kasar (PK)</p>
+                        <p id="modal-PK" class="text-base font-bold text-slate-800">-</p>
                     </div>
-                    <div class="bg-slate-50 rounded-xl p-3 border border-slate-250">
-                        <p class="text-xs font-bold text-slate-500 uppercase">Lemak Kasar (LK)</p>
-                        <p id="modal-LK" class="text-base font-black text-slate-900">-</p>
+                    <div class="bg-slate-50 rounded-xl p-3 border border-slate-200">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase">Lemak Kasar (LK)</p>
+                        <p id="modal-LK" class="text-base font-bold text-slate-800">-</p>
                     </div>
-                    <div class="bg-slate-50 rounded-xl p-3 border border-slate-250">
-                        <p class="text-xs font-bold text-slate-500 uppercase">Mineral / Abu</p>
-                        <p id="modal-Abu" class="text-base font-black text-slate-900">-</p>
+                    <div class="bg-slate-50 rounded-xl p-3 border border-slate-200">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase">Mineral / Abu</p>
+                        <p id="modal-Abu" class="text-base font-bold text-slate-800">-</p>
                     </div>
-                    <div class="bg-slate-50 rounded-xl p-3 border border-slate-250">
-                        <p class="text-xs font-bold text-slate-500 uppercase">Kalsium (Ca)</p>
-                        <p id="modal-Ca" class="text-base font-black text-slate-900">-</p>
+                    <div class="bg-slate-50 rounded-xl p-3 border border-slate-200">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase">Kalsium (Ca)</p>
+                        <p id="modal-Ca" class="text-base font-bold text-slate-800">-</p>
                     </div>
-                    <div class="bg-slate-50 rounded-xl p-3 border border-slate-250">
-                        <p class="text-xs font-bold text-slate-500 uppercase">Fosfor (P)</p>
-                        <p id="modal-P" class="text-base font-black text-slate-900">-</p>
+                    <div class="bg-slate-50 rounded-xl p-3 border border-slate-200">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase">Fosfor (P)</p>
+                        <p id="modal-P" class="text-base font-bold text-slate-800">-</p>
                     </div>
-                    <div class="col-span-2 bg-slate-50 rounded-xl p-3 border border-slate-250 text-center">
-                        <p class="text-xs font-bold text-slate-500 uppercase">Energi TDN</p>
-                        <p id="modal-TDN" class="text-base font-black text-emerald-700">-</p>
+                    <div class="col-span-2 bg-slate-50 rounded-xl p-3 border border-slate-200 text-center">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase">Energi (TDN)</p>
+                        <p id="modal-TDN" class="text-base font-extrabold text-emerald-700">-</p>
                     </div>
                 </div>
             </div>
-            <div class="bg-slate-100 p-6 border-t border-slate-200 flex justify-end">
-                <button onclick="closeModal()" class="px-6 py-3 rounded-xl bg-white border border-slate-350 hover:bg-slate-50 text-slate-800 font-extrabold text-sm shadow-xs transition-colors">Tutup Jendela</button>
+            <div class="bg-slate-50 p-6 border-t border-slate-155 flex justify-end">
+                <button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 font-bold text-xs shadow-xs transition-colors">Tutup Jendela</button>
             </div>
         </div>
     </div>
@@ -521,13 +512,13 @@
             document.getElementById(`tab-${tabId}`).classList.remove('hidden');
 
             document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('bg-white', 'text-emerald-800', 'shadow');
-                btn.classList.add('text-white', 'hover:bg-emerald-650');
+                btn.classList.remove('bg-white', 'text-emerald-900', 'shadow-md');
+                btn.classList.add('text-emerald-100', 'hover:text-white', 'hover:bg-emerald-700/50');
             });
 
             const activeBtn = document.getElementById(`btn-tab-${tabId}`);
-            activeBtn.classList.remove('text-white', 'hover:bg-emerald-650');
-            activeBtn.classList.add('bg-white', 'text-emerald-800', 'shadow');
+            activeBtn.classList.remove('text-emerald-100', 'hover:text-white', 'hover:bg-emerald-700/50');
+            activeBtn.classList.add('bg-white', 'text-emerald-900', 'shadow-md');
         }
 
         // Initialize App
@@ -551,14 +542,14 @@
                         renderTernakTable();
                         const badge = document.getElementById('badge-api-livestock');
                         badge.innerText = "Terhubung (API)";
-                        badge.className = "px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-850 border border-emerald-300";
+                        badge.className = "px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-350";
                     }
                 })
                 .catch(err => {
                     console.warn("Failed to fetch live Ternak data, using local fallback.", err);
                     const badge = document.getElementById('badge-api-livestock');
-                    badge.innerText = "Offline (Menggunakan Database Cadangan)";
-                    badge.className = "px-3 py-1 rounded-full text-xs font-bold bg-slate-200 text-slate-800 border border-slate-300";
+                    badge.innerText = "Offline (Database Cadangan)";
+                    badge.className = "px-3 py-1 rounded-full text-xs font-bold bg-slate-200 text-slate-700 border border-slate-300";
                 });
 
             // Fetch Bahan
@@ -571,14 +562,14 @@
                         updateAllSelects();
                         const badge = document.getElementById('badge-api-ingredients');
                         badge.innerText = "Terhubung (API)";
-                        badge.className = "px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-850 border border-emerald-300";
+                        badge.className = "px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-350";
                     }
                 })
                 .catch(err => {
                     console.warn("Failed to fetch live Bahan data, using local fallback.", err);
                     const badge = document.getElementById('badge-api-ingredients');
-                    badge.innerText = "Offline (Menggunakan Database Cadangan)";
-                    badge.className = "px-3 py-1 rounded-full text-xs font-bold bg-slate-200 text-slate-800 border border-slate-300";
+                    badge.innerText = "Offline (Database Cadangan)";
+                    badge.className = "px-3 py-1 rounded-full text-xs font-bold bg-slate-200 text-slate-700 border border-slate-300";
                 });
         }
 
@@ -602,15 +593,15 @@
             container.innerHTML = '';
             dataTernak.forEach(item => {
                 const row = document.createElement('tr');
-                row.className = "hover:bg-slate-100 transition-colors border-b border-slate-200";
+                row.className = "hover:bg-slate-50 transition-colors border-b border-slate-200";
                 row.innerHTML = `
                     <td class="py-3 px-4 text-left font-bold text-slate-900">${item.nama}</td>
-                    <td class="py-3 px-2 font-semibold text-slate-850">${item.BK}%</td>
-                    <td class="py-3 px-2 font-semibold text-slate-850">${item.PK}%</td>
-                    <td class="py-3 px-2 font-semibold text-slate-850">${item.LK}%</td>
-                    <td class="py-3 px-2 font-semibold text-slate-850">${item.Abu}%</td>
-                    <td class="py-3 px-2 font-semibold text-slate-850">${item.Ca}%</td>
-                    <td class="py-3 px-2 font-semibold text-slate-850">${item.P}%</td>
+                    <td class="py-3 px-2 font-semibold text-slate-800">${item.BK}%</td>
+                    <td class="py-3 px-2 font-semibold text-slate-800">${item.PK}%</td>
+                    <td class="py-3 px-2 font-semibold text-slate-800">${item.LK}%</td>
+                    <td class="py-3 px-2 font-semibold text-slate-800">${item.Abu}%</td>
+                    <td class="py-3 px-2 font-semibold text-slate-800">${item.Ca}%</td>
+                    <td class="py-3 px-2 font-semibold text-slate-800">${item.P}%</td>
                     <td class="py-3 px-2 font-extrabold text-emerald-800 bg-emerald-50">${item.TDN}%</td>
                 `;
                 container.appendChild(row);
@@ -622,15 +613,15 @@
             container.innerHTML = '';
             dataBahan.forEach(item => {
                 const row = document.createElement('tr');
-                row.className = "hover:bg-slate-100 transition-colors border-b border-slate-200";
+                row.className = "hover:bg-slate-50 transition-colors border-b border-slate-200";
                 row.innerHTML = `
                     <td class="py-3 px-4 text-left font-bold text-slate-900">${item.nama}</td>
-                    <td class="py-3 px-2 font-semibold text-slate-850">${item.BK}%</td>
-                    <td class="py-3 px-2 font-semibold text-slate-850">${item.PK}%</td>
-                    <td class="py-3 px-2 font-semibold text-slate-850">${item.LK}%</td>
-                    <td class="py-3 px-2 font-semibold text-slate-850">${item.Abu}%</td>
-                    <td class="py-3 px-2 font-semibold text-slate-850">${item.Ca}%</td>
-                    <td class="py-3 px-2 font-semibold text-slate-850">${item.P}%</td>
+                    <td class="py-3 px-2 font-semibold text-slate-800">${item.BK}%</td>
+                    <td class="py-3 px-2 font-semibold text-slate-800">${item.PK}%</td>
+                    <td class="py-3 px-2 font-semibold text-slate-800">${item.LK}%</td>
+                    <td class="py-3 px-2 font-semibold text-slate-800">${item.Abu}%</td>
+                    <td class="py-3 px-2 font-semibold text-slate-800">${item.Ca}%</td>
+                    <td class="py-3 px-2 font-semibold text-slate-800">${item.P}%</td>
                     <td class="py-3 px-2 font-extrabold text-emerald-800 bg-emerald-50">${item.TDN}%</td>
                 `;
                 container.appendChild(row);
@@ -713,22 +704,22 @@
                 for (let i = currentRows; i < count; i++) {
                     const row = document.createElement('tr');
                     row.id = `feed-row-${i}`;
-                    row.className = "hover:bg-slate-50 border-b border-slate-200";
+                    row.className = "hover:bg-slate-50 border-b border-slate-100";
                     row.innerHTML = `
                         <td class="py-4 pr-2 flex items-center gap-2">
-                            <!-- Info Icon button - large and obvious -->
-                            <button type="button" onclick="showIngredientDetails(${i})" class="bg-slate-100 hover:bg-emerald-100 text-slate-700 hover:text-emerald-800 p-2 rounded-lg border border-slate-300 font-bold text-sm flex items-center gap-1 transition-colors" title="Lihat detail gizi bahan ini">
-                                ℹ️ <span class="hidden sm:inline">Info Gizi</span>
+                            <!-- Info Icon button -->
+                            <button type="button" onclick="showIngredientDetails(${i})" class="bg-slate-100 hover:bg-emerald-100 text-slate-600 hover:text-emerald-800 p-2.5 rounded-xl border border-slate-200 font-extrabold text-sm flex items-center justify-center transition-colors shadow-xs" title="Lihat detail gizi bahan ini">
+                                ℹ️
                             </button>
-                            <select onchange="calculateFeed()" name="ingredient" class="w-full bg-white border-2 border-slate-350 rounded-xl px-3 py-2.5 text-base text-slate-800 font-semibold focus:border-emerald-700 focus:outline-none">
+                            <select onchange="calculateFeed()" name="ingredient" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2.5 text-base text-slate-800 font-bold focus:border-emerald-600 focus:outline-none transition-all shadow-xs">
                                 <option value="">-- Pilih Bahan --</option>
                             </select>
                         </td>
                         <td class="py-4 px-2">
-                            <input type="number" name="percentage" min="0" max="100" step="any" oninput="calculateFeed()" placeholder="0" class="w-full bg-white border-2 border-slate-350 rounded-xl px-3 py-2.5 text-base text-slate-900 font-bold focus:border-emerald-700 focus:outline-none text-center">
+                            <input type="number" name="percentage" min="0" max="100" step="any" oninput="calculateFeed()" placeholder="0" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2.5 text-base text-slate-900 font-bold focus:border-emerald-600 focus:outline-none text-center shadow-xs">
                         </td>
                         <td class="py-4 pl-2">
-                            <input type="number" name="price" min="0" step="any" oninput="calculateFeed()" placeholder="0" class="w-full bg-white border-2 border-slate-350 rounded-xl px-3 py-2.5 text-base text-slate-900 font-bold focus:border-emerald-700 focus:outline-none">
+                            <input type="number" name="price" min="0" step="any" oninput="calculateFeed()" placeholder="0" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2.5 text-base text-slate-900 font-bold focus:border-emerald-600 focus:outline-none shadow-xs">
                         </td>
                     `;
                     container.appendChild(row);
@@ -779,6 +770,7 @@
             document.getElementById('detail-modal').classList.remove('hidden');
         }
 
+        // Close Modal
         function closeModal() {
             document.getElementById('detail-modal').classList.add('hidden');
         }
@@ -831,11 +823,11 @@
             percentBar.style.width = `${Math.min(sumPercent, 100)}%`;
 
             if (sumPercent === 100) {
-                percentBadge.className = "px-3 py-1 rounded-lg bg-emerald-100 text-emerald-800 font-extrabold border border-emerald-300 text-base shadow-xs";
+                percentBadge.className = "px-3 py-1 rounded-lg bg-emerald-100 text-emerald-800 font-extrabold border border-emerald-350 text-base shadow-xs";
                 percentBar.className = "h-full bg-emerald-600 transition-all duration-200";
                 warningText.classList.add('hidden');
             } else {
-                percentBadge.className = "px-3 py-1 rounded-lg bg-red-100 text-red-800 font-extrabold border border-red-300 text-base shadow-xs";
+                percentBadge.className = "px-3 py-1 rounded-lg bg-red-150 text-red-800 font-extrabold border border-red-300 text-base shadow-xs";
                 percentBar.className = "h-full bg-red-500 transition-all duration-200";
                 warningText.classList.remove('hidden');
             }
@@ -848,12 +840,12 @@
             // Update Composition Breakdown List
             const breakdownContainer = document.getElementById('breakdown-container');
             if (selectedIngredients.length === 0) {
-                breakdownContainer.innerHTML = '<p class="text-sm text-slate-500 italic text-center py-4 bg-slate-55 rounded-xl">Belum ada bahan pakan yang dipilih.</p>';
+                breakdownContainer.innerHTML = '<p class="text-sm text-slate-450 italic text-center py-4 bg-slate-50 border border-slate-200 rounded-xl">Belum ada bahan pakan.</p>';
             } else {
                 breakdownContainer.innerHTML = '';
                 selectedIngredients.forEach(item => {
                     const el = document.createElement('div');
-                    el.className = "flex justify-between items-center bg-slate-50 border-2 border-slate-200 rounded-xl p-3 text-sm";
+                    el.className = "flex justify-between items-center bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm";
                     el.innerHTML = `
                         <div class="space-y-0.5">
                             <p class="font-bold text-slate-900">${item.nama}</p>
@@ -881,14 +873,14 @@
                 if (selectedTernak) {
                     if (difference >= 0) {
                         diffEl.innerText = `Cukup ✅ (+${difference.toFixed(2)}%)`;
-                        diffEl.className = "px-2 py-1 rounded bg-emerald-100 text-emerald-800 font-bold border border-emerald-300 text-xs block text-center shadow-xs";
+                        diffEl.className = "inline-block px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-350 shadow-xs";
                     } else {
                         diffEl.innerText = `Kurang ❌ (${difference.toFixed(2)}%)`;
-                        diffEl.className = "px-2 py-1 rounded bg-red-100 text-red-800 font-bold border border-red-300 text-xs block text-center shadow-xs";
+                        diffEl.className = "inline-block px-3 py-1 rounded-full text-xs font-bold bg-red-100 text-red-800 border border-red-300 shadow-xs";
                     }
                 } else {
                     diffEl.innerText = "Belum Ada Target";
-                    diffEl.className = "px-2 py-1 rounded bg-slate-100 text-slate-600 font-bold border border-slate-200 text-xs block text-center shadow-xs";
+                    diffEl.className = "inline-block px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-500 border border-slate-200 shadow-xs";
                 }
             }
         }
