@@ -14,8 +14,9 @@
   "buildCommand": "npm install && npm run build",
   "outputDirectory": "public",
   "env": {
+    "APP_KEY": "base64:G2jrfV8QYDN/IHm3yMiE5Gfvn/KlroqFQOraO8dHCEg=",
     "APP_ENV": "production",
-    "APP_DEBUG": "false",
+    "APP_DEBUG": "true",
     "VIEW_COMPILED_PATH": "/tmp",
     "CACHE_STORE": "array",
     "CACHE_DRIVER": "array",
