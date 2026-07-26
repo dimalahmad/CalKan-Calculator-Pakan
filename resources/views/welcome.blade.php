@@ -404,13 +404,34 @@
                         <thead class="sticky top-0 bg-slate-900 border-b border-slate-800 text-slate-400 font-bold uppercase tracking-wider text-xs z-10">
                             <tr>
                                 <th class="py-3 px-4 text-left">Nama Bahan</th>
-                                <th class="py-3 px-2" title="Bahan Kering (Dry Matter/DM)">BK (%)</th>
-                                <th class="py-3 px-2" title="Protein Kasar (Crude Protein/CP)">PK (%)</th>
-                                <th class="py-3 px-2" title="Lemak Kasar (Ether Extract/Crude Fat)">LK (%)</th>
-                                <th class="py-3 px-2" title="Kadar Abu (Ash Content)">Abu (%)</th>
-                                <th class="py-3 px-2" title="Kalsium (Calcium)">Ca (%)</th>
-                                <th class="py-3 px-2" title="Fosfor (Phosphorus)">P (%)</th>
-                                <th class="py-3 px-2" title="Total Digestible Nutrients (Total Nutrien Tercerna)">TDN (%)</th>
+                                <th class="py-3 px-2 text-center" title="Bahan Kering (Dry Matter/DM)">
+                                    <span class="block text-xs font-bold">BK (%)</span>
+                                    <span class="block text-[9px] font-normal text-slate-500 leading-tight">Bahan Kering</span>
+                                </th>
+                                <th class="py-3 px-2 text-center" title="Protein Kasar (Crude Protein/CP)">
+                                    <span class="block text-xs font-bold">PK (%)</span>
+                                    <span class="block text-[9px] font-normal text-slate-500 leading-tight">Protein Kasar</span>
+                                </th>
+                                <th class="py-3 px-2 text-center" title="Lemak Kasar (Ether Extract/Crude Fat)">
+                                    <span class="block text-xs font-bold">LK (%)</span>
+                                    <span class="block text-[9px] font-normal text-slate-500 leading-tight">Lemak Kasar</span>
+                                </th>
+                                <th class="py-3 px-2 text-center" title="Kadar Abu (Ash Content)">
+                                    <span class="block text-xs font-bold">Abu (%)</span>
+                                    <span class="block text-[9px] font-normal text-slate-500 leading-tight">Kadar Abu</span>
+                                </th>
+                                <th class="py-3 px-2 text-center" title="Kalsium (Calcium)">
+                                    <span class="block text-xs font-bold">Ca (%)</span>
+                                    <span class="block text-[9px] font-normal text-slate-500 leading-tight">Kalsium</span>
+                                </th>
+                                <th class="py-3 px-2 text-center" title="Fosfor (Phosphorus)">
+                                    <span class="block text-xs font-bold">P (%)</span>
+                                    <span class="block text-[9px] font-normal text-slate-500 leading-tight">Fosfor</span>
+                                </th>
+                                <th class="py-3 px-2 text-center" title="Total Digestible Nutrients (Total Nutrien Tercerna)">
+                                    <span class="block text-xs font-bold">TDN (%)</span>
+                                    <span class="block text-[9px] font-normal text-slate-500 leading-tight">Total Nutrien</span>
+                                </th>
                             </tr>
                         </thead>
                         <tbody id="ingredients-table-body" class="divide-y divide-slate-800/45">
@@ -442,13 +463,34 @@
                         <thead class="sticky top-0 bg-slate-900 border-b border-slate-800 text-slate-400 font-bold uppercase tracking-wider text-xs z-10">
                             <tr>
                                 <th class="py-3 px-4 text-left">Nama Ternak</th>
-                                <th class="py-3 px-2" title="Bahan Kering (Dry Matter/DM)">BK (%)</th>
-                                <th class="py-3 px-2" title="Protein Kasar (Crude Protein/CP)">PK (%)</th>
-                                <th class="py-3 px-2" title="Lemak Kasar (Ether Extract/Crude Fat)">LK (%)</th>
-                                <th class="py-3 px-2" title="Kadar Abu (Ash Content)">Abu (%)</th>
-                                <th class="py-3 px-2" title="Kalsium (Calcium)">Ca (%)</th>
-                                <th class="py-3 px-2" title="Fosfor (Phosphorus)">P (%)</th>
-                                <th class="py-3 px-2" title="Total Digestible Nutrients (Total Nutrien Tercerna)">TDN (%)</th>
+                                <th class="py-3 px-2 text-center" title="Bahan Kering (Dry Matter/DM)">
+                                    <span class="block text-xs font-bold">BK (%)</span>
+                                    <span class="block text-[9px] font-normal text-slate-500 leading-tight">Bahan Kering</span>
+                                </th>
+                                <th class="py-3 px-2 text-center" title="Protein Kasar (Crude Protein/CP)">
+                                    <span class="block text-xs font-bold">PK (%)</span>
+                                    <span class="block text-[9px] font-normal text-slate-500 leading-tight">Protein Kasar</span>
+                                </th>
+                                <th class="py-3 px-2 text-center" title="Lemak Kasar (Ether Extract/Crude Fat)">
+                                    <span class="block text-xs font-bold">LK (%)</span>
+                                    <span class="block text-[9px] font-normal text-slate-500 leading-tight">Lemak Kasar</span>
+                                </th>
+                                <th class="py-3 px-2 text-center" title="Kadar Abu (Ash Content)">
+                                    <span class="block text-xs font-bold">Abu (%)</span>
+                                    <span class="block text-[9px] font-normal text-slate-500 leading-tight">Kadar Abu</span>
+                                </th>
+                                <th class="py-3 px-2 text-center" title="Kalsium (Calcium)">
+                                    <span class="block text-xs font-bold">Ca (%)</span>
+                                    <span class="block text-[9px] font-normal text-slate-500 leading-tight">Kalsium</span>
+                                </th>
+                                <th class="py-3 px-2 text-center" title="Fosfor (Phosphorus)">
+                                    <span class="block text-xs font-bold">P (%)</span>
+                                    <span class="block text-[9px] font-normal text-slate-500 leading-tight">Fosfor</span>
+                                </th>
+                                <th class="py-3 px-2 text-center" title="Total Digestible Nutrients (Total Nutrien Tercerna)">
+                                    <span class="block text-xs font-bold">TDN (%)</span>
+                                    <span class="block text-[9px] font-normal text-slate-500 leading-tight">Total Nutrien</span>
+                                </th>
                             </tr>
                         </thead>
                         <tbody id="livestock-table-body" class="divide-y divide-slate-800/45">
