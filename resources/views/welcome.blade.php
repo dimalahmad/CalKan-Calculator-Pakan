@@ -320,9 +320,6 @@
                             </svg>
                         </span>
                         <h2 class="text-lg font-bold text-slate-100">Kandungan Nutrisi Bahan Pakan</h2>
-                    </div>
-                    <!-- Live Loading Badge -->
-                    <span id="badge-api-ingredients" class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/20 animate-pulse">Loading API...</span>
                 </div>
 
                 <div class="overflow-x-auto max-h-[60vh] overflow-y-auto">
@@ -358,9 +355,6 @@
                             </svg>
                         </span>
                         <h2 class="text-lg font-bold text-slate-100">Tabel Kebutuhan Standar Nutrisi Ternak</h2>
-                    </div>
-                    <!-- Live Loading Badge -->
-                    <span id="badge-api-livestock" class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/20 animate-pulse">Loading API...</span>
                 </div>
 
                 <div class="overflow-x-auto max-h-[60vh] overflow-y-auto">
@@ -391,7 +385,6 @@
     <footer class="border-t border-slate-900 bg-slate-950 py-6 mt-12">
         <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
             <p class="text-xs text-slate-500">CalKan - Website Kalkulator Pakan Ternak All-in-One.</p>
-            <p class="text-[10px] text-slate-600">Terintegrasi dengan Google Sheets API.</p>
         </div>
     </footer>
 
@@ -543,49 +536,7 @@
             renderIngredientsTable();
             renderRows(3); // Start with 3 ingredient rows
 
-            // Then try to fetch from API for real-time updates
-            fetchData();
         });
-
-        function fetchData() {
-            // Fetch Ternak
-            fetch("https://script.google.com/macros/s/AKfycbwgcwSOROmoKE26pyN3YkBAS2_MpaM2zC_ySZc8z0lo9_0HZXx_bJMZTFULsKVAydNiCg/exec?nama=Ternak")
-                .then(res => res.json())
-                .then(json => {
-                    if (json && json.data) {
-                        dataTernak = json.data;
-                        populateTernakDropdown();
-                        renderTernakTable();
-                        document.getElementById('badge-api-livestock').innerText = "Live (Google Sheets)";
-                        document.getElementById('badge-api-livestock').classList.remove('bg-amber-500/10', 'text-amber-400', 'border-amber-500/20', 'animate-pulse');
-                        document.getElementById('badge-api-livestock').classList.add('bg-emerald-500/10', 'text-emerald-400', 'border-emerald-500/20');
-                    }
-                })
-                .catch(err => {
-                    console.warn("Failed to fetch live Ternak data, using local fallback.", err);
-                    document.getElementById('badge-api-livestock').innerText = "Offline Database";
-                    document.getElementById('badge-api-livestock').classList.remove('animate-pulse');
-                });
-
-            // Fetch Bahan
-            fetch("https://script.google.com/macros/s/AKfycbwgcwSOROmoKE26pyN3YkBAS2_MpaM2zC_ySZc8z0lo9_0HZXx_bJMZTFULsKVAydNiCg/exec?nama=Bahan")
-                .then(res => res.json())
-                .then(json => {
-                    if (json && json.data) {
-                        dataBahan = json.data;
-                        renderIngredientsTable();
-                        updateAllSelects();
-                        document.getElementById('badge-api-ingredients').innerText = "Live (Google Sheets)";
-                        document.getElementById('badge-api-ingredients').classList.remove('bg-amber-500/10', 'text-amber-400', 'border-amber-500/20', 'animate-pulse');
-                        document.getElementById('badge-api-ingredients').classList.add('bg-emerald-500/10', 'text-emerald-400', 'border-emerald-500/20');
-                    }
-                })
-                .catch(err => {
-                    console.warn("Failed to fetch live Bahan data, using local fallback.", err);
-                    document.getElementById('badge-api-ingredients').innerText = "Offline Database";
-                    document.getElementById('badge-api-ingredients').classList.remove('animate-pulse');
-                });
-        }
 
         // Dropdown Ternak Inisialisasi
         function populateTernakDropdown() {
