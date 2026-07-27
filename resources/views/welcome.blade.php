@@ -486,7 +486,7 @@
     <!-- Footer -->
     <footer class="border-t border-slate-200 bg-white py-6 mt-12 text-center text-slate-600">
         <div class="max-w-6xl mx-auto px-4 space-y-1">
-            <p class="text-sm font-bold">Kalkulator Pakan CalKan</p>
+            <p class="text-sm font-bold">&copy; Copyright Tim KKN-PPM UGM SABA MORTARA 2026</p>
             <p class="text-xs text-slate-400">Dapat dijalankan tanpa koneksi internet jika sudah dimuat.</p>
         </div>
     </footer>
