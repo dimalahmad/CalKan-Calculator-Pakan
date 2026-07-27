@@ -144,8 +144,57 @@
                                     <label for="input-weight" class="block text-sm font-bold text-slate-700 mb-2">Total Berat Campuran:</label>
                                     <div class="relative">
                                         <input type="number" id="input-weight" value="0" min="0" step="any" oninput="calculateFeed()" class="w-full bg-white border border-slate-300 rounded-xl pl-4 pr-16 py-3 text-base text-slate-800 font-bold focus:ring-2 focus:ring-emerald-600/20 focus:border-emerald-700 focus:outline-none">
-                                        <span class="absolute right-4 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-500">KG</span>
+                                        <span id="weight-unit-label" class="absolute right-4 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-500">KG</span>
                                     </div>
+                                </div>
+                            </div>
+
+                            <!-- Pet Energy & Feeding Calculator (Hanya muncul di mode peliharaan) -->
+                            <div id="pet-energy-calculator-container" class="hidden border-t border-slate-100 pt-4 space-y-4">
+                                <h3 class="text-sm font-bold text-slate-700">Estimasi Kebutuhan Energi & Pakan Harian:</h3>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <!-- Input Berat Badan Hewan -->
+                                    <div>
+                                        <label for="pet-body-weight" class="block text-xs font-bold text-slate-600 mb-1">Berat Badan Hewan (KG):</label>
+                                        <input type="number" id="pet-body-weight" value="5" min="0.1" step="any" oninput="calculatePetEnergy()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm text-slate-800 font-bold focus:ring-2 focus:ring-emerald-600/20 focus:border-emerald-700 focus:outline-none">
+                                    </div>
+                                    <!-- Select Faktor Kondisi / Aktivitas -->
+                                    <div>
+                                        <label for="pet-activity-factor" class="block text-xs font-bold text-slate-600 mb-1">Status / Aktivitas:</label>
+                                        <select id="pet-activity-factor" onchange="calculatePetEnergy()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm text-slate-800 font-semibold focus:ring-2 focus:ring-emerald-600/20 focus:border-emerald-700 focus:outline-none">
+                                            <option value="1.6" data-type="anjing">Anjing: Dewasa Normal (1.6)</option>
+                                            <option value="2.0" data-type="anjing">Anjing: Dewasa Aktif (2.0)</option>
+                                            <option value="1.2" data-type="anjing">Anjing: Senior / Kurang Aktif (1.2)</option>
+                                            <option value="3.0" data-type="anjing">Anjing: Puppy / Hamil / Menyusui (3.0)</option>
+                                            <option value="1.2" data-type="kucing">Kucing: Dewasa Steril (1.2)</option>
+                                            <option value="1.4" data-type="kucing">Kucing: Dewasa Tidak Steril (1.4)</option>
+                                            <option value="1.0" data-type="kucing">Kucing: Senior / Kurang Aktif (1.0)</option>
+                                            <option value="2.5" data-type="kucing">Kucing: Kitten / Hamil / Menyusui (2.5)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <!-- Output Box RER, MER, and Recommended Grams -->
+                                <div class="grid grid-cols-3 gap-2 bg-emerald-50/60 rounded-xl p-3 border border-emerald-100/80 text-center">
+                                    <div>
+                                        <p class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider">RER</p>
+                                        <p id="pet-rer-val" class="text-sm font-black text-slate-900 mt-0.5">0 kcal/hari</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider">MER (Kebutuhan Energi)</p>
+                                        <p id="pet-mer-val" class="text-sm font-black text-slate-900 mt-0.5">0 kcal/hari</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider">Rekomendasi Porsi</p>
+                                        <p id="pet-rec-feed-val" class="text-sm font-black text-emerald-700 mt-0.5 font-mono">0 Gram/hari</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Action Button to apply to Total Berat Campuran -->
+                                <div class="flex justify-end">
+                                    <button type="button" onclick="applyRecFeedToInput()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3.5 py-2.5 rounded-xl shadow-sm hover:shadow transition-all flex items-center gap-1.5">
+                                        Gunakan Rekomendasi Porsi
+                                    </button>
                                 </div>
                             </div>
 
@@ -562,6 +611,19 @@
             ]
         };
 
+        const petDefaults = {
+            "1": { weight: 5, factorVal: "3.0" }, // Puppy
+            "2": { weight: 10, factorVal: "1.6" }, // Dewasa Anjing
+            "3": { weight: 10, factorVal: "1.2" }, // Senior Anjing
+            "4": { weight: 12, factorVal: "3.0" }, // Hamil Anjing
+            "5": { weight: 12, factorVal: "3.0" }, // Menyusui Anjing
+            "6": { weight: 1.5, factorVal: "2.5" }, // Kitten
+            "7": { weight: 4, factorVal: "1.2" }, // Dewasa Kucing
+            "8": { weight: 4, factorVal: "1.0" }, // Senior Kucing
+            "9": { weight: 4.5, factorVal: "2.5" }, // Hamil Kucing
+            "10": { weight: 4.5, factorVal: "2.5" } // Menyusui Kucing
+        };
+
         // Active State Selection
         let selectedTernak = null;
 
@@ -629,6 +691,20 @@
             // Reset input values
             document.getElementById('input-weight').value = "0";
             
+            // Update unit label
+            document.getElementById('weight-unit-label').innerText = mode === 'ternak' ? 'KG' : 'Gram';
+            
+            // Toggle Pet Energy Calculator
+            const petCalcContainer = document.getElementById('pet-energy-calculator-container');
+            if (mode === 'ternak') {
+                petCalcContainer.classList.add('hidden');
+            } else {
+                petCalcContainer.classList.remove('hidden');
+                document.getElementById('pet-body-weight').value = "5";
+                updateActivityFactorDropdown("");
+                calculatePetEnergy();
+            }
+            
             // Update Langkah 3 Header & Cost visibility
             const step3Title = document.getElementById('step-3-title');
             const costSummaryContainer = document.getElementById('cost-summary-container');
@@ -654,6 +730,71 @@
                     el.classList.add('hidden');
                 }
             });
+        }
+
+        function updateActivityFactorDropdown(val) {
+            const factorSelect = document.getElementById('pet-activity-factor');
+            if (!val) {
+                Array.from(factorSelect.options).forEach(opt => {
+                    opt.style.display = "";
+                });
+                return;
+            }
+            
+            const isAnjing = parseInt(val) <= 5;
+            Array.from(factorSelect.options).forEach(opt => {
+                const type = opt.getAttribute('data-type');
+                if (isAnjing && type === 'anjing') {
+                    opt.style.display = "";
+                } else if (!isAnjing && type === 'kucing') {
+                    opt.style.display = "";
+                } else {
+                    opt.style.display = "none";
+                }
+            });
+        }
+
+        function calculatePetEnergy(currentFeedMe = null) {
+            if (currentMode !== 'peliharaan') return;
+
+            const weight = parseFloat(document.getElementById('pet-body-weight').value) || 0;
+            const factor = parseFloat(document.getElementById('pet-activity-factor').value) || 0;
+
+            if (weight <= 0) {
+                document.getElementById('pet-rer-val').innerText = '0 kcal/hari';
+                document.getElementById('pet-mer-val').innerText = '0 kcal/hari';
+                document.getElementById('pet-rec-feed-val').innerText = '0 Gram/hari';
+                return;
+            }
+
+            // RER = 70 * (weight ^ 0.75)
+            const rer = 70 * Math.pow(weight, 0.75);
+            const mer = rer * factor;
+
+            document.getElementById('pet-rer-val').innerText = `${Math.round(rer)} kcal/hari`;
+            document.getElementById('pet-mer-val').innerText = `${Math.round(mer)} kcal/hari`;
+
+            let meVal = currentFeedMe;
+            if (meVal === null) {
+                const resMeEl = document.getElementById('res-ME');
+                meVal = resMeEl ? parseFloat(resMeEl.innerText) : 0;
+            }
+
+            if (meVal > 0) {
+                const recIntake = (mer / meVal) * 1000;
+                document.getElementById('pet-rec-feed-val').innerText = `${Math.round(recIntake)} Gram/hari`;
+                window.lastPetRecIntake = Math.round(recIntake);
+            } else {
+                document.getElementById('pet-rec-feed-val').innerText = '0 Gram/hari';
+                window.lastPetRecIntake = 0;
+            }
+        }
+
+        function applyRecFeedToInput() {
+            if (window.lastPetRecIntake && window.lastPetRecIntake > 0) {
+                document.getElementById('input-weight').value = window.lastPetRecIntake;
+                calculateFeed();
+            }
         }
 
         function showModeSelection() {
@@ -916,6 +1057,13 @@
                 document.getElementById(`tar-${n.key}`).innerText = valStr;
             });
 
+            if (currentMode === 'peliharaan' && petDefaults[val]) {
+                document.getElementById('pet-body-weight').value = petDefaults[val].weight;
+                updateActivityFactorDropdown(val);
+                document.getElementById('pet-activity-factor').value = petDefaults[val].factorVal;
+                calculatePetEnergy();
+            }
+
             calculateFeed();
         }
 
@@ -1127,7 +1275,8 @@
             if (!currentMode) return;
 
             const rows = document.querySelectorAll('#feed-rows-container tr');
-            const totalKg = parseFloat(document.getElementById('input-weight').value) || 0;
+            const weightInput = parseFloat(document.getElementById('input-weight').value) || 0;
+            const totalKg = currentMode === 'ternak' ? weightInput : weightInput / 1000;
             
             let sumPercent = 0;
             let totalCost = 0;
@@ -1213,7 +1362,7 @@
                             <p class="text-xs text-slate-500">${item.percentage}% dari total pakan</p>
                         </div>
                         <div class="text-right space-y-0.5">
-                            <p class="font-extrabold text-slate-800">${item.weight.toFixed(2)} KG</p>
+                            <p class="font-extrabold text-slate-800">${currentMode === 'ternak' ? `${item.weight.toFixed(2)} KG` : `${(item.weight * 1000).toFixed(0)} Gram`}</p>
                             ${currentMode === 'ternak' ? `<p class="text-xs text-emerald-700 font-bold">Biaya: Rp ${item.cost.toLocaleString('id-ID', { maximumFractionDigits: 0 })}</p>` : ''}
                         </div>
                     `;
@@ -1246,6 +1395,10 @@
                     diffEl.className = "px-2 py-1 rounded bg-slate-100 text-slate-650 font-bold border border-slate-200 text-xs block text-center shadow-xs";
                 }
             });
+
+            if (currentMode === 'peliharaan') {
+                calculatePetEnergy(mixNutrients['ME']);
+            }
         }
     </script>
 </body>
