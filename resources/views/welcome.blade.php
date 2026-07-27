@@ -34,7 +34,7 @@
                     CALKAN
                 </div>
                 <div>
-                    <h1 id="header-title" class="text-xl md:text-2xl font-bold tracking-tight font-sans">Kalkulator Pakan CalKan</h1>
+                    <h1 id="header-title" class="text-xl md:text-2xl font-bold tracking-tight font-sans">Calculator Pakan CalKan</h1>
                     <p id="header-subtitle" class="text-xs text-emerald-100 font-medium">Formulasi Pakan Ternak Mandiri - Mudah dan Praktis</p>
                 </div>
             </div>
@@ -44,14 +44,14 @@
                 <button id="btn-change-mode" onclick="showModeSelection()" class="hidden bg-emerald-800 hover:bg-emerald-900 text-white font-bold px-3 py-2 rounded-xl text-sm border border-emerald-600 transition-colors">
                     Ganti Kategori
                 </button>
-                <nav id="header-tabs-nav" class="hidden flex bg-emerald-800/50 p-1 rounded-xl border border-emerald-600 overflow-x-auto max-w-full whitespace-nowrap scrollbar-none">
-                    <button onclick="switchTab('calculator')" id="btn-tab-calculator" class="tab-btn px-4 py-2 text-xs md:text-sm font-bold rounded-lg transition-all duration-150 bg-white text-emerald-800 shadow">
+                <nav id="header-tabs-nav" class="hidden flex bg-emerald-800/50 p-1 rounded-xl border border-emerald-650 overflow-x-auto max-w-full whitespace-nowrap scrollbar-none">
+                    <button onclick="switchTab('calculator')" id="btn-tab-calculator" class="tab-btn px-2.5 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs md:text-sm font-bold rounded-lg transition-all duration-150 bg-white text-emerald-800 shadow">
                         Hitung Pakan
                     </button>
-                    <button onclick="switchTab('ingredients')" id="btn-tab-ingredients" class="tab-btn px-4 py-2 text-xs md:text-sm font-bold rounded-lg transition-all duration-150 text-white hover:bg-emerald-600/50">
+                    <button onclick="switchTab('ingredients')" id="btn-tab-ingredients" class="tab-btn px-2.5 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs md:text-sm font-bold rounded-lg transition-all duration-150 text-white hover:bg-emerald-600/50">
                         Data Bahan Pakan
                     </button>
-                    <button onclick="switchTab('livestock')" id="btn-tab-livestock" class="tab-btn px-4 py-2 text-xs md:text-sm font-bold rounded-lg transition-all duration-150 text-white hover:bg-emerald-600/50">
+                    <button onclick="switchTab('livestock')" id="btn-tab-livestock" class="tab-btn px-2.5 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs md:text-sm font-bold rounded-lg transition-all duration-150 text-white hover:bg-emerald-600/50">
                         Standar Ternak
                     </button>
                 </nav>
@@ -70,31 +70,31 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Option 1: Livestock -->
-                <button onclick="selectAppMode('ternak')" class="bg-white border-2 border-slate-200 hover:border-emerald-600 rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-md transition-all text-left flex flex-col justify-between group">
+                <!-- Option 1: Pets -->
+                <button onclick="selectAppMode('peliharaan')" class="bg-white border-2 border-slate-200/80 hover:border-emerald-600 rounded-3xl p-6 md:p-8 shadow-sm hover:shadow-xl hover:shadow-emerald-100/40 transform hover:scale-[1.015] active:scale-[0.985] transition-all duration-300 text-left flex flex-col justify-between group">
                     <div class="space-y-4">
-                        <div class="bg-emerald-50 text-emerald-800 px-3 py-1 text-xs font-bold rounded-full w-max border border-emerald-200">
-                            Kategori Peternakan
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900">Hewan Ternak</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed">Kalkulasi formulasi pakan untuk Sapi Perah, Sapi Potong, Kambing, dan Domba. Menggunakan parameter gizi Bahan Kering (BK), Protein Kasar (PK), Lemak Kasar (LK), Kadar Abu, Kalsium (Ca), Fosfor (P), dan Energi TDN.</p>
-                    </div>
-                    <div class="mt-8 text-emerald-700 font-bold text-sm">
-                        Pilih Hewan Ternak &rarr;
-                    </div>
-                </button>
-                
-                <!-- Option 2: Pets -->
-                <button onclick="selectAppMode('peliharaan')" class="bg-white border-2 border-slate-200 hover:border-emerald-600 rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-md transition-all text-left flex flex-col justify-between group">
-                    <div class="space-y-4">
-                        <div class="bg-emerald-50 text-emerald-800 px-3 py-1 text-xs font-bold rounded-full w-max border border-emerald-200">
+                        <div class="bg-emerald-50 text-emerald-800 px-3 py-1.5 text-xs font-bold rounded-xl w-max border border-emerald-250">
                             Kategori Rumah Tangga
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900">Hewan Peliharaan</h3>
+                        <h3 class="text-xl font-bold text-slate-900 group-hover:text-emerald-800 transition-colors">Hewan Peliharaan</h3>
                         <p class="text-slate-500 text-sm leading-relaxed">Kalkulasi pakan anjing dan kucing (Puppy, Kitten, Dewasa, Senior, Hamil, Menyusui) sesuai standar AAFCO, FEDIAF, dan NRC. Menggunakan parameter gizi Kadar Air, Protein, Lemak, Serat Kasar, Kadar Abu, Kalsium (Ca), Fosfor (P), dan Energi Metabolis (ME).</p>
                     </div>
-                    <div class="mt-8 text-emerald-700 font-bold text-sm">
-                        Pilih Hewan Peliharaan &rarr;
+                    <div class="mt-8 text-emerald-700 font-extrabold text-sm flex items-center gap-1.5 group-hover:translate-x-1.5 transition-transform">
+                        Pilih Hewan Peliharaan <span class="text-lg leading-none">&rarr;</span>
+                    </div>
+                </button>
+
+                <!-- Option 2: Livestock -->
+                <button onclick="selectAppMode('ternak')" class="bg-white border-2 border-slate-200/80 hover:border-emerald-600 rounded-3xl p-6 md:p-8 shadow-sm hover:shadow-xl hover:shadow-emerald-100/40 transform hover:scale-[1.015] active:scale-[0.985] transition-all duration-300 text-left flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="bg-emerald-50 text-emerald-800 px-3 py-1.5 text-xs font-bold rounded-xl w-max border border-emerald-250">
+                            Kategori Peternakan
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 group-hover:text-emerald-800 transition-colors">Hewan Ternak</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">Kalkulasi formulasi pakan untuk Sapi Perah, Sapi Potong, Kambing, dan Domba. Menggunakan parameter gizi Bahan Kering (BK), Protein Kasar (PK), Lemak Kasar (LK), Kadar Abu, Kalsium (Ca), Fosfor (P), dan Energi TDN.</p>
+                    </div>
+                    <div class="mt-8 text-emerald-700 font-extrabold text-sm flex items-center gap-1.5 group-hover:translate-x-1.5 transition-transform">
+                        Pilih Hewan Ternak <span class="text-lg leading-none">&rarr;</span>
                     </div>
                 </button>
             </div>
@@ -107,23 +107,35 @@
             <div id="tab-calculator" class="tab-content space-y-6">
                 
                 <!-- Panduan Singkat Banner -->
-                <div class="bg-white border-l-4 border-emerald-600 rounded-r-xl p-5 shadow-sm space-y-2 border border-slate-200">
-                    <h3 class="text-base font-bold text-emerald-800">Petunjuk Penggunaan Kalkulator:</h3>
-                    <ol class="list-decimal list-inside text-sm text-slate-700 space-y-2 leading-relaxed">
-                        <li>
-                            <span class="font-bold text-slate-900">Pilih Jenis Hewan & Jumlah Ekor:</span> Tentukan jenis hewan serta jumlah hewan di Langkah 1. 
-                            <span class="text-slate-500">(Khusus Hewan Peliharaan: masukkan pula Berat Badan, Status Aktivitas, dan Target Gizi harian).</span>
-                        </li>
-                        <li>
-                            <span class="font-bold text-slate-900">Rekomendasi Pakan Instan:</span> Klik tombol <span class="text-emerald-700 font-bold">"Gunakan Resep Rekomendasi"</span> untuk memformulasikan pakan secara otomatis dengan gizi penuh (Hijau) dan biaya paling ekonomis.
-                        </li>
-                        <li>
-                            <span class="font-bold text-slate-900">Formulasi Mandiri (Langkah 2):</span> Atau pilih bahan secara manual. Atur takaran pakan dalam satuan <span class="font-bold text-slate-800">KG</span> (untuk Ternak) atau <span class="font-bold text-slate-800">Gram</span> (untuk Pets) hingga memenuhi target gizi minimum.
-                        </li>
-                        <li>
-                            <span class="font-bold text-slate-900">Analisis & Rincian (Langkah 3):</span> Lihat total berat campuran pakan, porsi per ekor, rincian timbangan, perbandingan gizi lengkap, serta estimasi biaya pakan keseluruhan maupun per ekor.
-                        </li>
-                    </ol>
+                <div class="bg-gradient-to-br from-emerald-50 to-teal-50/30 border-l-4 border-emerald-600 rounded-r-2xl p-5 shadow-xs border border-slate-200/60 flex flex-col md:flex-row gap-4 items-start">
+                    <div class="bg-emerald-600/10 p-2.5 rounded-xl text-emerald-800 hidden sm:block">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <div class="space-y-3 flex-1">
+                        <h3 class="text-base font-bold text-emerald-950">Petunjuk Penggunaan Kalkulator:</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs md:text-sm text-slate-750 leading-relaxed">
+                            <div class="space-y-2.5">
+                                <div class="flex gap-2">
+                                    <span class="font-black text-emerald-800 bg-emerald-100/80 px-2 py-0.5 rounded text-xs h-max">1</span>
+                                    <p><span class="font-bold text-slate-900">Pilih Jenis Hewan & Jumlah Ekor:</span> Tentukan jenis hewan serta jumlah hewan di Langkah 1. <span class="text-slate-500 text-xs block mt-0.5">(Khusus Pets: masukkan juga Berat Badan, Aktivitas, & Target Gizi).</span></p>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-black text-emerald-800 bg-emerald-100/80 px-2 py-0.5 rounded text-xs h-max">2</span>
+                                    <p><span class="font-bold text-slate-900">Rekomendasi Pakan Instan:</span> Klik tombol <span class="text-emerald-700 font-bold">"Gunakan Resep Rekomendasi"</span> untuk memformulasikan pakan secara otomatis dengan gizi penuh (Hijau) & biaya paling hemat.</p>
+                                </div>
+                            </div>
+                            <div class="space-y-2.5">
+                                <div class="flex gap-2">
+                                    <span class="font-black text-emerald-800 bg-emerald-100/80 px-2 py-0.5 rounded text-xs h-max">3</span>
+                                    <p><span class="font-bold text-slate-900">Formulasi Mandiri (Langkah 2):</span> Atau pilih bahan secara manual. Atur takaran pakan dalam satuan <span class="font-bold text-slate-800">KG</span> (untuk Ternak) atau <span class="font-bold text-slate-800">Gram</span> (untuk Pets).</p>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="font-black text-emerald-800 bg-emerald-100/80 px-2 py-0.5 rounded text-xs h-max">4</span>
+                                    <p><span class="font-bold text-slate-900">Analisis & Rincian (Langkah 3):</span> Lihat total berat campuran pakan, porsi per ekor, rincian timbangan, perbandingan gizi lengkap, serta estimasi biaya pakan keseluruhan maupun per ekor.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Grid Layout for Inputs & Outputs -->
@@ -133,10 +145,12 @@
                     <div class="lg:col-span-7 space-y-6">
                         
                         <!-- LANGKAH 1: Ternak & Berat -->
-                        <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
-                            <div class="flex items-center gap-2 border-b border-slate-100 pb-3">
-                                <span class="text-emerald-700 text-lg font-bold">Langkah 1:</span>
-                                <h2 id="step-1-title" class="text-lg font-bold text-slate-900">Pilih Jenis Ternak dan Berat Pakan</h2>
+                        <div class="bg-white border border-slate-200/80 rounded-2xl p-5 md:p-6 shadow-sm hover:shadow-md/50 transition-shadow space-y-4">
+                            <div class="flex items-center gap-3 border-b border-slate-100 pb-3 flex-wrap">
+                                <span class="inline-flex items-center px-3 py-1 rounded-xl text-xs font-black bg-emerald-100 text-emerald-800 border border-emerald-250">
+                                    Langkah 1
+                                </span>
+                                <h2 id="step-1-title" class="text-base md:text-lg font-bold text-slate-900">Pilih Jenis Ternak dan Berat Pakan</h2>
                             </div>
                             
                             <div class="grid grid-cols-1 gap-4">
@@ -154,7 +168,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="flex justify-end pt-1 hidden" id="ternak-rec-recipe-wrapper">
+                                <div class="flex justify-center pt-1 hidden" id="ternak-rec-recipe-wrapper">
                                     <button type="button" onclick="applyTernakRecommendedRecipe()" id="btn-ternak-rec-recipe" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-sm hover:shadow transition-all flex items-center gap-1.5">
                                         <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                                         Gunakan Resep Rekomendasi
@@ -215,7 +229,7 @@
                                     </div>
                                 </div>
 
-                                <div class="flex justify-end pt-1" id="rec-recipe-wrapper">
+                                <div class="flex justify-center pt-1" id="rec-recipe-wrapper">
                                     <button type="button" onclick="applyRecommendedRecipe()" id="btn-rec-recipe" class="hidden bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-sm hover:shadow transition-all flex items-center gap-1.5">
                                         <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                                         Gunakan Resep Rekomendasi
@@ -233,11 +247,13 @@
                         </div>
 
                         <!-- LANGKAH 2: Pemilihan Bahan -->
-                        <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                        <div class="bg-white border border-slate-200/80 rounded-2xl p-5 md:p-6 shadow-sm hover:shadow-md/50 transition-shadow space-y-4">
                             <div class="flex items-center justify-between border-b border-slate-100 pb-3 flex-wrap gap-3">
-                                <div class="flex items-center gap-2">
-                                    <span class="text-emerald-700 text-lg font-bold">Langkah 2:</span>
-                                    <h2 class="text-lg font-bold text-slate-900">Atur Campuran Bahan Pakan</h2>
+                                <div class="flex items-center gap-3">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-xl text-xs font-black bg-emerald-100 text-emerald-800 border border-emerald-250">
+                                        Langkah 2
+                                    </span>
+                                    <h2 class="text-base md:text-lg font-bold text-slate-900">Atur Campuran Bahan Pakan</h2>
                                 </div>
                                 
                                 <!-- Hidden input to track row count -->
@@ -256,16 +272,16 @@
                             </div>
 
                             <!-- Feed Table -->
-                            <div class="overflow-x-auto border border-slate-200 rounded-xl">
-                                <table class="w-full text-left border-collapse min-w-[500px]">
-                                    <thead>
+                            <div class="border border-slate-200 rounded-xl overflow-hidden">
+                                <table class="w-full block sm:table text-left border-collapse">
+                                    <thead class="hidden sm:table-header-group">
                                         <tr class="bg-slate-55 border-b border-slate-200 text-xs font-bold text-slate-600 uppercase">
                                             <th class="py-3 px-3 w-1/2">Nama Bahan Pakan</th>
                                             <th id="th-weight-column" class="py-3 px-2 w-28 text-center">Porsi (%)</th>
                                             <th class="py-3 px-3 w-36 price-column">Harga (Rp/Kg)</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="feed-rows-container" class="divide-y divide-slate-100">
+                                    <tbody id="feed-rows-container" class="block sm:table-row-group divide-y divide-slate-150 sm:divide-y sm:divide-slate-100">
                                         <!-- Dynamic rows injected here -->
                                     </tbody>
                                 </table>
@@ -277,10 +293,12 @@
                     <div class="lg:col-span-5 space-y-6">
                         
                         <!-- LANGKAH 3: Hasil & Biaya -->
-                        <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-6">
-                            <div class="flex items-center gap-2 border-b border-slate-100 pb-3">
-                                <span class="text-emerald-700 text-lg font-bold">Langkah 3:</span>
-                                <h2 id="step-3-title" class="text-lg font-bold text-slate-900">Hasil Formulasi dan Biaya</h2>
+                        <div class="bg-white border border-slate-200/80 rounded-2xl p-5 md:p-6 shadow-sm hover:shadow-md/50 transition-shadow space-y-5">
+                            <div class="flex items-center gap-3 border-b border-slate-100 pb-3 flex-wrap">
+                                <span class="inline-flex items-center px-3 py-1 rounded-xl text-xs font-black bg-emerald-100 text-emerald-800 border border-emerald-250">
+                                    Langkah 3
+                                </span>
+                                <h2 id="step-3-title" class="text-base md:text-lg font-bold text-slate-900">Hasil Formulasi dan Biaya</h2>
                             </div>
 
                             <!-- Progress Bar for total weight -->
@@ -329,14 +347,14 @@
                         <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
                             <h2 class="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">Cek Kecukupan Gizi Pakan</h2>
 
-                            <div class="overflow-x-auto border border-slate-200 rounded-xl">
-                                <table class="w-full text-center text-sm min-w-[340px]">
+                             <div class="border border-slate-200 rounded-xl overflow-hidden">
+                                <table class="w-full text-center text-xs sm:text-sm border-collapse">
                                     <thead>
-                                        <tr class="bg-slate-55 border-b border-slate-200 text-slate-660 font-bold">
+                                        <tr class="bg-slate-55 border-b border-slate-200 text-slate-600 font-bold">
                                             <th class="py-2.5 px-2 text-left">Nutrisi</th>
-                                            <th class="py-2.5 px-2">Hasil</th>
-                                            <th class="py-2.5 px-2">Target</th>
-                                            <th class="py-2.5 px-2">Status</th>
+                                            <th class="py-2.5 px-1.5 sm:px-2">Hasil</th>
+                                            <th class="py-2.5 px-1.5 sm:px-2">Target</th>
+                                            <th class="py-2.5 px-1.5 sm:px-2">Status</th>
                                         </tr>
                                     </thead>
                                     <tbody id="nutrient-comparison-tbody" class="divide-y divide-slate-100">
@@ -353,55 +371,55 @@
                     <div class="flex items-center gap-2 border-b border-slate-100 pb-3">
                         <h2 class="text-base font-bold text-slate-900">Panduan Istilah Parameter Nutrisi</h2>
                     </div>
-                    <div class="overflow-x-auto border border-slate-200 rounded-xl">
-                        <table class="w-full text-left text-sm border-collapse min-w-[500px]">
-                            <thead>
+                    <div class="border border-slate-200 rounded-xl overflow-hidden">
+                        <table class="w-full block sm:table text-left border-collapse">
+                            <thead class="hidden sm:table-header-group">
                                 <tr class="bg-slate-55 border-b border-slate-200 text-slate-650 font-bold text-xs uppercase">
                                     <th class="py-2.5 px-4 w-1/4">Singkatan</th>
                                     <th class="py-2.5 px-4 w-1/3">Nama Lengkap</th>
                                     <th class="py-2.5 px-4">Keterangan Singkat</th>
                                 </tr>
                             </thead>
-                            <tbody class="divide-y divide-slate-150 text-slate-700">
-                                <tr class="hover:bg-slate-50">
-                                    <td class="py-3 px-4 font-bold text-slate-900">BK (%) / Air (%)</td>
-                                    <td class="py-3 px-4 font-semibold text-slate-800">Bahan Kering / Kadar Air</td>
-                                    <td class="py-3 px-4 text-slate-500 text-xs">Pencerminan porsi zat nutrisi solid atau kadar basah kelembaban pakan secara total.</td>
+                            <tbody class="block sm:table-row-group divide-y divide-slate-150 text-slate-700">
+                                <tr class="block sm:table-row hover:bg-slate-50 py-3 sm:py-0">
+                                    <td class="block sm:table-cell py-1.5 sm:py-3 px-4 font-bold text-slate-900 bg-slate-50/50 sm:bg-transparent">BK (%) / Air (%)</td>
+                                    <td class="block sm:table-cell py-0.5 sm:py-3 px-4 font-semibold text-slate-800 text-xs sm:text-sm">Bahan Kering / Kadar Air</td>
+                                    <td class="block sm:table-cell py-1 sm:py-3 px-4 text-slate-500 text-xs leading-relaxed">Pencerminan porsi zat nutrisi solid atau kadar basah kelembaban pakan secara total.</td>
                                 </tr>
-                                <tr class="hover:bg-slate-50">
-                                    <td class="py-3 px-4 font-bold text-slate-900">PK (%) / Protein (%)</td>
-                                    <td class="py-3 px-4 font-semibold text-slate-800">Protein Kasar (Crude Protein)</td>
-                                    <td class="py-3 px-4 text-slate-500 text-xs">Zat utama pakan pembangun sel-sel tubuh, jaringan otot, dan regenerasi organ tubuh.</td>
+                                <tr class="block sm:table-row hover:bg-slate-50 py-3 sm:py-0">
+                                    <td class="block sm:table-cell py-1.5 sm:py-3 px-4 font-bold text-slate-900 bg-slate-50/50 sm:bg-transparent">PK (%) / Protein (%)</td>
+                                    <td class="block sm:table-cell py-0.5 sm:py-3 px-4 font-semibold text-slate-800 text-xs sm:text-sm">Protein Kasar (Crude Protein)</td>
+                                    <td class="block sm:table-cell py-1 sm:py-3 px-4 text-slate-500 text-xs leading-relaxed">Zat utama pakan pembangun sel-sel tubuh, jaringan otot, dan regenerasi organ tubuh.</td>
                                 </tr>
-                                <tr class="hover:bg-slate-50">
-                                    <td class="py-3 px-4 font-bold text-slate-900">LK (%) / Lemak (%)</td>
-                                    <td class="py-3 px-4 font-semibold text-slate-800">Lemak Kasar (Crude Fat)</td>
-                                    <td class="py-3 px-4 text-slate-500 text-xs">Sumber kalori yang padat energi dan mempermudah penyerapan vitamin larut lemak.</td>
+                                <tr class="block sm:table-row hover:bg-slate-50 py-3 sm:py-0">
+                                    <td class="block sm:table-cell py-1.5 sm:py-3 px-4 font-bold text-slate-900 bg-slate-50/50 sm:bg-transparent">LK (%) / Lemak (%)</td>
+                                    <td class="block sm:table-cell py-0.5 sm:py-3 px-4 font-semibold text-slate-800 text-xs sm:text-sm">Lemak Kasar (Crude Fat)</td>
+                                    <td class="block sm:table-cell py-1 sm:py-3 px-4 text-slate-500 text-xs leading-relaxed">Sumber kalori yang padat energi dan mempermudah penyerapan vitamin larut lemak.</td>
                                 </tr>
-                                <tr class="hover:bg-slate-50">
-                                    <td class="py-3 px-4 font-bold text-slate-900">Serat (%)</td>
-                                    <td class="py-3 px-4 font-semibold text-slate-800">Serat Kasar (Crude Fiber)</td>
-                                    <td class="py-3 px-4 text-slate-500 text-xs">Komponen karbohidrat kompleks yang melancarkan kinerja sistem organ pencernaan.</td>
+                                <tr class="block sm:table-row hover:bg-slate-50 py-3 sm:py-0">
+                                    <td class="block sm:table-cell py-1.5 sm:py-3 px-4 font-bold text-slate-900 bg-slate-50/50 sm:bg-transparent">Serat (%)</td>
+                                    <td class="block sm:table-cell py-0.5 sm:py-3 px-4 font-semibold text-slate-800 text-xs sm:text-sm">Serat Kasar (Crude Fiber)</td>
+                                    <td class="block sm:table-cell py-1 sm:py-3 px-4 text-slate-500 text-xs leading-relaxed">Komponen karbohidrat kompleks yang melancarkan kinerja sistem organ pencernaan.</td>
                                 </tr>
-                                <tr class="hover:bg-slate-50">
-                                    <td class="py-3 px-4 font-bold text-slate-900">Abu (%)</td>
-                                    <td class="py-3 px-4 font-semibold text-slate-800">Kadar Abu (Total Mineral)</td>
-                                    <td class="py-3 px-4 text-slate-500 text-xs">Zat anorganik sisa pemanasan pakan yang mencakup semua mineral penyusun pakan.</td>
+                                <tr class="block sm:table-row hover:bg-slate-50 py-3 sm:py-0">
+                                    <td class="block sm:table-cell py-1.5 sm:py-3 px-4 font-bold text-slate-900 bg-slate-50/50 sm:bg-transparent">Abu (%)</td>
+                                    <td class="block sm:table-cell py-0.5 sm:py-3 px-4 font-semibold text-slate-800 text-xs sm:text-sm">Kadar Abu (Total Mineral)</td>
+                                    <td class="block sm:table-cell py-1 sm:py-3 px-4 text-slate-500 text-xs leading-relaxed">Zat anorganik sisa pemanasan pakan yang mencakup semua mineral penyusun pakan.</td>
                                 </tr>
-                                <tr class="hover:bg-slate-50">
-                                    <td class="py-3 px-4 font-bold text-slate-900">Ca (%)</td>
-                                    <td class="py-3 px-4 font-semibold text-slate-800">Kalsium (Calcium)</td>
-                                    <td class="py-3 px-4 text-slate-500 text-xs">Mineral makro krusial untuk struktur pembentukan tulang, gigi, dan sistem syaraf.</td>
+                                <tr class="block sm:table-row hover:bg-slate-50 py-3 sm:py-0">
+                                    <td class="block sm:table-cell py-1.5 sm:py-3 px-4 font-bold text-slate-900 bg-slate-50/50 sm:bg-transparent">Ca (%)</td>
+                                    <td class="block sm:table-cell py-0.5 sm:py-3 px-4 font-semibold text-slate-800 text-xs sm:text-sm">Kalsium (Calcium)</td>
+                                    <td class="block sm:table-cell py-1 sm:py-3 px-4 text-slate-500 text-xs leading-relaxed">Mineral makro krusial untuk struktur pembentukan tulang, gigi, dan sistem syaraf.</td>
                                 </tr>
-                                <tr class="hover:bg-slate-50">
-                                    <td class="py-3 px-4 font-bold text-slate-900">P (%)</td>
-                                    <td class="py-3 px-4 font-semibold text-slate-800">Fosfor (Phosphorus)</td>
-                                    <td class="py-3 px-4 text-slate-500 text-xs">Mineral pembentuk energi seluler ATP serta membantu integrasi mineral kalsium.</td>
+                                <tr class="block sm:table-row hover:bg-slate-50 py-3 sm:py-0">
+                                    <td class="block sm:table-cell py-1.5 sm:py-3 px-4 font-bold text-slate-900 bg-slate-50/50 sm:bg-transparent">P (%)</td>
+                                    <td class="block sm:table-cell py-0.5 sm:py-3 px-4 font-semibold text-slate-800 text-xs sm:text-sm">Fosfor (Phosphorus)</td>
+                                    <td class="block sm:table-cell py-1 sm:py-3 px-4 text-slate-500 text-xs leading-relaxed">Mineral pembentuk energi seluler ATP serta membantu integrasi mineral kalsium.</td>
                                 </tr>
-                                <tr class="hover:bg-slate-50">
-                                    <td class="py-3 px-4 font-bold text-slate-900">TDN (%) / ME (kcal/kg)</td>
-                                    <td class="py-3 px-4 font-semibold text-slate-800">Total Nutrien Tercerna / Energi Metabolis</td>
-                                    <td class="py-3 px-4 text-slate-500 text-xs">Nilai total kalori pakan yang siap dimetabolisme dan dimanfaatkan oleh tubuh hewan.</td>
+                                <tr class="block sm:table-row hover:bg-slate-50 py-3 sm:py-0">
+                                    <td class="block sm:table-cell py-1.5 sm:py-3 px-4 font-bold text-slate-900 bg-slate-50/50 sm:bg-transparent">TDN (%) / ME (kcal/kg)</td>
+                                    <td class="block sm:table-cell py-0.5 sm:py-3 px-4 font-semibold text-slate-800 text-xs sm:text-sm">Total Nutrien Tercerna / Energi Metabolis</td>
+                                    <td class="block sm:table-cell py-1 sm:py-3 px-4 text-slate-500 text-xs leading-relaxed">Nilai total kalori pakan yang siap dimetabolisme dan dimanfaatkan oleh tubuh hewan.</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -688,7 +706,7 @@
             const liveHeading = document.getElementById('livestock-title-heading');
             
             if (mode === 'ternak') {
-                headerTitle.innerText = "Kalkulator Pakan CalKan";
+                headerTitle.innerText = "Calculator Pakan Ternak CalKan";
                 headerSubtitle.innerText = "Formulasi Pakan Ternak Mandiri - Mudah dan Praktis";
                 tabIngredientsBtn.innerText = "Data Bahan Pakan";
                 tabLivestockBtn.innerText = "Standar Ternak";
@@ -698,7 +716,7 @@
                 ingHeading.innerText = "Kandungan Gizi Bahan Pakan Lengkap";
                 liveHeading.innerText = "Standar Minimum Kebutuhan Gizi Ternak";
             } else {
-                headerTitle.innerText = "Kalkulator Pakan Pets CalKan";
+                headerTitle.innerText = "Calculator Pakan Pets CalKan";
                 headerSubtitle.innerText = "Formulasi Pakan Anjing dan Kucing - Mudah dan Praktis";
                 tabIngredientsBtn.innerText = "Data Bahan Peliharaan";
                 tabLivestockBtn.innerText = "Standar Hewan Peliharaan";
@@ -742,6 +760,15 @@
             const thWeight = document.getElementById('th-weight-column');
             if (thWeight) {
                 thWeight.innerText = mode === 'ternak' ? 'Berat (KG)' : 'Berat (Gram)';
+            }
+
+            // Update mobile weight label text
+            const currentRowsCount = parseInt(document.getElementById('input-rows').value) || 0;
+            for (let idx = 0; idx < currentRowsCount; idx++) {
+                const mobLabel = document.getElementById(`mobile-label-weight-${idx}`);
+                if (mobLabel) {
+                    mobLabel.innerText = mode === 'ternak' ? 'Porsi (KG):' : 'Porsi (Gram):';
+                }
             }
 
             // Update total weight text
@@ -935,6 +962,11 @@
             document.getElementById('main-calculator-app').classList.add('hidden');
             document.getElementById('header-tabs-nav').classList.add('hidden');
             document.getElementById('btn-change-mode').classList.add('hidden');
+            
+            const headerTitle = document.getElementById('header-title');
+            if (headerTitle) {
+                headerTitle.innerText = "Calculator Pakan CalKan";
+            }
         }
 
         // Tab Switching
@@ -1237,13 +1269,13 @@
                 const tr = document.createElement('tr');
                 tr.className = "hover:bg-slate-50 border-b border-slate-100";
                 tr.innerHTML = `
-                    <td class="py-3 px-2 text-left">
-                        <span class="font-bold text-slate-900 block">${n.label}</span>
-                        <span class="text-xs text-slate-500 block">${n.desc}</span>
+                    <td class="py-2.5 px-1.5 sm:px-2 text-left">
+                        <span class="font-bold text-slate-900 block text-xs sm:text-sm">${n.label}</span>
+                        <span class="text-[10px] text-slate-500 block leading-tight mt-0.5">${n.desc}</span>
                     </td>
-                    <td id="res-${n.key}" class="font-bold text-slate-800">0.00%</td>
-                    <td id="tar-${n.key}" class="text-slate-500 font-medium">0.00%</td>
-                    <td class="px-2"><span id="diff-${n.key}" class="px-2 py-1 rounded bg-slate-100 text-slate-650 font-bold border border-slate-200 text-xs block text-center">Belum Ada Target</span></td>
+                    <td id="res-${n.key}" class="py-2.5 px-1 sm:px-2 font-bold text-slate-850 text-xs sm:text-sm">0.00%</td>
+                    <td id="tar-${n.key}" class="py-2.5 px-1 sm:px-2 text-slate-500 font-medium text-xs sm:text-sm">0.00%</td>
+                    <td class="py-2.5 px-1 sm:px-2"><span id="diff-${n.key}" class="px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 font-bold border border-slate-200 text-[10px] sm:text-xs block text-center whitespace-nowrap">Belum Ada</span></td>
                 `;
                 tbody.appendChild(tr);
             });
@@ -1359,32 +1391,37 @@
                 for (let i = currentRows; i < count; i++) {
                     const row = document.createElement('tr');
                     row.id = `feed-row-${i}`;
-                    row.className = "hover:bg-slate-50 border-b border-slate-200";
+                    row.className = "block sm:table-row hover:bg-slate-50 border-b border-slate-200 py-3 sm:py-0 space-y-2 sm:space-y-0";
                     row.innerHTML = `
-                        <td class="py-3 px-3 flex items-center gap-2">
-                            <button type="button" onclick="showIngredientDetails(${i})" class="bg-slate-100 hover:bg-emerald-100 text-slate-700 hover:text-emerald-800 px-2.5 py-2 rounded-xl border border-slate-300 font-bold text-xs flex items-center gap-1 transition-colors" title="Lihat detail gizi">
-                                Info
-                            </button>
-                            <div class="relative custom-select-container w-full" id="custom-select-container-${i}">
-                                <button type="button" onclick="toggleDropdown(${i})" id="custom-select-btn-${i}" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-800 font-semibold focus:border-emerald-700 focus:outline-none flex justify-between items-center">
-                                    <span id="custom-select-label-${i}">-- Pilih Bahan --</span>
-                                    <svg class="w-4 h-4 text-slate-500 transition-transform duration-200" id="custom-select-arrow-${i}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <td class="block sm:table-cell py-1 sm:py-3 px-3 w-full sm:w-1/2">
+                            <span class="block sm:hidden text-xs font-bold text-slate-550 mb-1.5">Nama Bahan Pakan:</span>
+                            <div class="flex items-center gap-2">
+                                <button type="button" onclick="showIngredientDetails(${i})" class="bg-slate-100 hover:bg-emerald-100 text-slate-700 hover:text-emerald-800 px-2.5 py-2.5 rounded-xl border border-slate-300 font-bold text-xs flex items-center gap-1 transition-colors shrink-0" title="Lihat detail gizi">
+                                    Info
                                 </button>
-                                <input type="hidden" name="ingredient" id="custom-select-val-${i}">
-                                <div id="custom-select-dropdown-${i}" class="absolute z-[999] left-0 right-0 mt-1 hidden bg-white border border-slate-200 rounded-xl shadow-xl max-h-64 overflow-hidden flex flex-col">
-                                    <div class="p-2 border-b border-slate-100 bg-slate-50">
-                                        <input type="text" oninput="filterDropdown(${i}, this.value)" placeholder="Cari bahan..." class="w-full bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-emerald-600">
-                                    </div>
-                                    <div id="custom-select-options-${i}" class="overflow-y-auto max-h-48 text-sm text-slate-700 py-1">
-                                        <!-- options items populated dynamically -->
+                                <div class="relative custom-select-container w-full" id="custom-select-container-${i}">
+                                    <button type="button" onclick="toggleDropdown(${i})" id="custom-select-btn-${i}" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-800 font-semibold focus:border-emerald-700 focus:outline-none flex justify-between items-center">
+                                        <span id="custom-select-label-${i}">-- Pilih Bahan --</span>
+                                        <svg class="w-4 h-4 text-slate-500 transition-transform duration-200" id="custom-select-arrow-${i}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                    </button>
+                                    <input type="hidden" name="ingredient" id="custom-select-val-${i}">
+                                    <div id="custom-select-dropdown-${i}" class="absolute z-[999] left-0 right-0 mt-1 hidden bg-white border border-slate-200 rounded-xl shadow-xl max-h-64 overflow-hidden flex flex-col">
+                                        <div class="p-2 border-b border-slate-100 bg-slate-50">
+                                            <input type="text" oninput="filterDropdown(${i}, this.value)" placeholder="Cari bahan..." class="w-full bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-emerald-600">
+                                        </div>
+                                        <div id="custom-select-options-${i}" class="overflow-y-auto max-h-48 text-sm text-slate-700 py-1">
+                                            <!-- options items populated dynamically -->
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </td>
-                        <td class="py-3 px-2">
+                        <td class="block sm:table-cell py-1 sm:py-3 px-3 sm:px-2 w-full sm:w-28">
+                            <span class="block sm:hidden text-xs font-bold text-slate-550 mb-1.5" id="mobile-label-weight-${i}">Porsi:</span>
                             <input type="number" name="percentage" min="0" step="any" oninput="calculateFeed()" placeholder="0" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-900 font-bold focus:border-emerald-700 focus:outline-none text-center">
                         </td>
-                        <td class="py-3 px-3 price-column">
+                        <td class="block sm:table-cell py-1 sm:py-3 px-3 w-full sm:w-36 price-column">
+                            <span class="block sm:hidden text-xs font-bold text-slate-550 mb-1.5">Harga (Rp/Kg):</span>
                             <input type="number" name="price" min="0" step="any" oninput="calculateFeed()" placeholder="0" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-900 font-bold focus:border-emerald-700 focus:outline-none">
                         </td>
                     `;
@@ -1680,14 +1717,14 @@
                     if (isSufficient) {
                         const showDiff = difference >= 0 ? `+${diffStr}` : diffStr;
                         diffEl.innerText = `Cukup (${showDiff})`;
-                        diffEl.className = "px-2 py-1 rounded bg-emerald-100 text-emerald-800 font-bold border border-emerald-300 text-xs block text-center shadow-xs";
+                        diffEl.className = "px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold border border-emerald-300 text-[10px] sm:text-xs block text-center shadow-xs whitespace-nowrap";
                     } else {
                         diffEl.innerText = `Kurang (${diffStr})`;
-                        diffEl.className = "px-2 py-1 rounded bg-red-100 text-red-800 font-bold border border-red-300 text-xs block text-center shadow-xs";
+                        diffEl.className = "px-1.5 py-0.5 rounded bg-red-100 text-red-800 font-bold border border-red-300 text-[10px] sm:text-xs block text-center shadow-xs whitespace-nowrap";
                     }
                 } else {
-                    diffEl.innerText = "Belum Ada Target";
-                    diffEl.className = "px-2 py-1 rounded bg-slate-100 text-slate-650 font-bold border border-slate-200 text-xs block text-center shadow-xs";
+                    diffEl.innerText = "Belum Ada";
+                    diffEl.className = "px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 font-bold border border-slate-200 text-[10px] sm:text-xs block text-center shadow-xs whitespace-nowrap";
                 }
             });
 
