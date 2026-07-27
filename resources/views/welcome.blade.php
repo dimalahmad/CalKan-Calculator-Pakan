@@ -143,7 +143,7 @@
                                 <div>
                                     <label for="input-weight" class="block text-sm font-bold text-slate-700 mb-2">Total Berat Campuran:</label>
                                     <div class="relative">
-                                        <input type="number" id="input-weight" value="100" min="1" step="any" oninput="calculateFeed()" class="w-full bg-white border border-slate-300 rounded-xl pl-4 pr-16 py-3 text-base text-slate-800 font-bold focus:ring-2 focus:ring-emerald-600/20 focus:border-emerald-700 focus:outline-none">
+                                        <input type="number" id="input-weight" value="0" min="0" step="any" oninput="calculateFeed()" class="w-full bg-white border border-slate-300 rounded-xl pl-4 pr-16 py-3 text-base text-slate-800 font-bold focus:ring-2 focus:ring-emerald-600/20 focus:border-emerald-700 focus:outline-none">
                                         <span class="absolute right-4 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-500">KG</span>
                                     </div>
                                 </div>
@@ -627,7 +627,7 @@
             renderRows(3);
             
             // Reset input values
-            document.getElementById('input-weight').value = "100";
+            document.getElementById('input-weight').value = "0";
             
             switchTab('calculator');
             calculateFeed();
