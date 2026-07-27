@@ -188,7 +188,7 @@
                                         <tr class="bg-slate-55 border-b border-slate-200 text-xs font-bold text-slate-600 uppercase">
                                             <th class="py-3 px-3 w-1/2">Nama Bahan Pakan</th>
                                             <th class="py-3 px-2 w-28 text-center">Porsi (%)</th>
-                                            <th class="py-3 px-3 w-36">Harga (Rp/Kg)</th>
+                                            <th class="py-3 px-3 w-36 price-column">Harga (Rp/Kg)</th>
                                         </tr>
                                     </thead>
                                     <tbody id="feed-rows-container" class="divide-y divide-slate-100">
@@ -206,7 +206,7 @@
                         <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-6">
                             <div class="flex items-center gap-2 border-b border-slate-100 pb-3">
                                 <span class="text-emerald-700 text-lg font-bold">Langkah 3:</span>
-                                <h2 class="text-lg font-bold text-slate-900">Hasil Formulasi dan Biaya</h2>
+                                <h2 id="step-3-title" class="text-lg font-bold text-slate-900">Hasil Formulasi dan Biaya</h2>
                             </div>
 
                             <!-- Progress Bar for total percentage -->
@@ -224,7 +224,7 @@
                             </div>
 
                             <!-- Cost Summary -->
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
+                            <div id="cost-summary-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
                                 <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-center shadow-xs">
                                     <p class="text-xs font-bold text-emerald-800 uppercase tracking-wider">Harga Pakan per KG</p>
                                     <p id="cost-per-kg" class="text-2xl font-black text-slate-900 mt-1">Rp 0</p>
@@ -629,8 +629,31 @@
             // Reset input values
             document.getElementById('input-weight').value = "0";
             
+            // Update Langkah 3 Header & Cost visibility
+            const step3Title = document.getElementById('step-3-title');
+            const costSummaryContainer = document.getElementById('cost-summary-container');
+            if (mode === 'ternak') {
+                step3Title.innerText = "Hasil Formulasi dan Biaya";
+                costSummaryContainer.classList.remove('hidden');
+            } else {
+                step3Title.innerText = "Hasil Formulasi dan Timbangan";
+                costSummaryContainer.classList.add('hidden');
+            }
+            
+            togglePriceColumns();
+            
             switchTab('calculator');
             calculateFeed();
+        }
+
+        function togglePriceColumns() {
+            document.querySelectorAll('.price-column').forEach(el => {
+                if (currentMode === 'ternak') {
+                    el.classList.remove('hidden');
+                } else {
+                    el.classList.add('hidden');
+                }
+            });
         }
 
         function showModeSelection() {
@@ -1000,7 +1023,7 @@
                         <td class="py-3 px-2">
                             <input type="number" name="percentage" min="0" max="100" step="any" oninput="calculateFeed()" placeholder="0" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-900 font-bold focus:border-emerald-700 focus:outline-none text-center">
                         </td>
-                        <td class="py-3 px-3">
+                        <td class="py-3 px-3 price-column">
                             <input type="number" name="price" min="0" step="any" oninput="calculateFeed()" placeholder="0" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-900 font-bold focus:border-emerald-700 focus:outline-none">
                         </td>
                     `;
@@ -1013,6 +1036,7 @@
             }
 
             updateAllSelects();
+            togglePriceColumns();
         }
 
         function updateAllSelects() {
@@ -1190,7 +1214,7 @@
                         </div>
                         <div class="text-right space-y-0.5">
                             <p class="font-extrabold text-slate-800">${item.weight.toFixed(2)} KG</p>
-                            <p class="text-xs text-emerald-700 font-bold">Biaya: Rp ${item.cost.toLocaleString('id-ID', { maximumFractionDigits: 0 })}</p>
+                            ${currentMode === 'ternak' ? `<p class="text-xs text-emerald-700 font-bold">Biaya: Rp ${item.cost.toLocaleString('id-ID', { maximumFractionDigits: 0 })}</p>` : ''}
                         </div>
                     `;
                     breakdownContainer.appendChild(el);
