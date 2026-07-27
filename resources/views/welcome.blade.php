@@ -107,13 +107,22 @@
             <div id="tab-calculator" class="tab-content space-y-6">
                 
                 <!-- Panduan Singkat Banner -->
-                <div class="bg-white border-l-4 border-emerald-600 rounded-r-xl p-5 shadow-sm space-y-1.5 border border-slate-200">
+                <div class="bg-white border-l-4 border-emerald-600 rounded-r-xl p-5 shadow-sm space-y-2 border border-slate-200">
                     <h3 class="text-base font-bold text-emerald-800">Petunjuk Penggunaan Kalkulator:</h3>
-                    <ol class="list-decimal list-inside text-sm text-slate-700 space-y-1">
-                        <li>Pilih jenis hewan dan masukkan total berat pakan pada Langkah 1.</li>
-                        <li>Pilih bahan pakan dan isi persentase campuran pada Langkah 2.</li>
-                        <li>Pastikan total persentase campuran pakan genap bernilai 100%.</li>
-                        <li>Hasil analisis kecukupan gizi dan estimasi biaya dapat dilihat pada Langkah 3.</li>
+                    <ol class="list-decimal list-inside text-sm text-slate-700 space-y-2 leading-relaxed">
+                        <li>
+                            <span class="font-bold text-slate-900">Pilih Jenis Hewan & Jumlah Ekor:</span> Tentukan jenis hewan serta jumlah hewan di Langkah 1. 
+                            <span class="text-slate-500">(Khusus Hewan Peliharaan: masukkan pula Berat Badan, Status Aktivitas, dan Target Gizi harian).</span>
+                        </li>
+                        <li>
+                            <span class="font-bold text-slate-900">Rekomendasi Pakan Instan:</span> Klik tombol <span class="text-emerald-700 font-bold">"Gunakan Resep Rekomendasi"</span> untuk memformulasikan pakan secara otomatis dengan gizi penuh (Hijau) dan biaya paling ekonomis.
+                        </li>
+                        <li>
+                            <span class="font-bold text-slate-900">Formulasi Mandiri (Langkah 2):</span> Atau pilih bahan secara manual. Atur takaran pakan dalam satuan <span class="font-bold text-slate-800">KG</span> (untuk Ternak) atau <span class="font-bold text-slate-800">Gram</span> (untuk Pets) hingga memenuhi target gizi minimum.
+                        </li>
+                        <li>
+                            <span class="font-bold text-slate-900">Analisis & Rincian (Langkah 3):</span> Lihat total berat campuran pakan, porsi per ekor, rincian timbangan, perbandingan gizi lengkap, serta estimasi biaya pakan keseluruhan maupun per ekor.
+                        </li>
                     </ol>
                 </div>
 
@@ -130,38 +139,45 @@
                                 <h2 id="step-1-title" class="text-lg font-bold text-slate-900">Pilih Jenis Ternak dan Berat Pakan</h2>
                             </div>
                             
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <!-- Select Ternak -->
-                                <div id="ternak-select-wrapper">
-                                    <label id="step-1-label" for="select-ternak" class="block text-sm font-bold text-slate-700 mb-2">Jenis Ternak:</label>
-                                    <select id="select-ternak" onchange="onTernakChange()" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-base text-slate-800 font-medium focus:ring-2 focus:ring-emerald-600/20 focus:border-emerald-700 focus:outline-none">
-                                        <option value="">-- Pilih Hewan --</option>
-                                    </select>
-                                </div>
-                                
-                                <!-- Input Weight -->
-                                <div>
-                                    <label for="input-weight" class="block text-sm font-bold text-slate-700 mb-2">Total Berat Campuran:</label>
-                                    <div class="relative">
-                                        <input type="number" id="input-weight" value="0" readonly class="w-full bg-slate-50 border border-slate-300 rounded-xl pl-4 pr-16 py-3 text-base text-slate-800 font-bold focus:outline-none cursor-not-allowed">
-                                        <span id="weight-unit-label" class="absolute right-4 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-500">KG</span>
+                            <div class="grid grid-cols-1 gap-4">
+                                <!-- Select Ternak & Jumlah Ternak -->
+                                <div id="ternak-select-wrapper" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                    <div class="sm:col-span-2">
+                                        <label id="step-1-label" for="select-ternak" class="block text-sm font-bold text-slate-700 mb-2">Jenis Ternak:</label>
+                                        <select id="select-ternak" onchange="onTernakChange()" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-base text-slate-800 font-medium focus:ring-2 focus:ring-emerald-600/20 focus:border-emerald-700 focus:outline-none">
+                                            <option value="">-- Pilih Hewan --</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="ternak-animal-count" class="block text-sm font-bold text-slate-700 mb-2">Jumlah Hewan (Ekor):</label>
+                                        <input type="number" id="ternak-animal-count" value="1" min="1" oninput="calculateFeed()" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-base text-slate-800 font-bold focus:ring-2 focus:ring-emerald-600/20 focus:border-emerald-700 focus:outline-none">
                                     </div>
                                 </div>
+                                
+                                <div class="flex justify-end pt-1 hidden" id="ternak-rec-recipe-wrapper">
+                                    <button type="button" onclick="applyTernakRecommendedRecipe()" id="btn-ternak-rec-recipe" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-sm hover:shadow transition-all flex items-center gap-1.5">
+                                        <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                                        Gunakan Resep Rekomendasi
+                                    </button>
+                                </div>
+
+                                <input type="hidden" id="input-weight" value="0">
                             </div>
 
                             <!-- Pet Energy & Feeding Calculator (Hanya muncul di mode peliharaan) -->
                             <div id="pet-energy-calculator-container" class="hidden border-t border-slate-100 pt-4 space-y-4">
                                 <h3 class="text-sm font-bold text-slate-700">Estimasi Kebutuhan Energi & Pakan Harian:</h3>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                                     <!-- Input Berat Badan Hewan -->
                                     <div>
                                         <label for="pet-body-weight" class="block text-xs font-bold text-slate-600 mb-1">Berat Badan Hewan (KG):</label>
-                                        <input type="number" id="pet-body-weight" value="5" min="0.1" step="any" oninput="calculatePetEnergy()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm text-slate-800 font-bold focus:ring-2 focus:ring-emerald-600/20 focus:border-emerald-700 focus:outline-none">
+                                        <input type="number" id="pet-body-weight" value="0" min="0" step="any" oninput="calculatePetEnergy()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm text-slate-800 font-bold focus:ring-2 focus:ring-emerald-600/20 focus:border-emerald-700 focus:outline-none">
                                     </div>
                                     <!-- Select Faktor Kondisi / Aktivitas & Target -->
                                     <div>
                                         <label for="pet-activity-factor" class="block text-xs font-bold text-slate-600 mb-1">Status / Aktivitas & Target Gizi:</label>
                                         <select id="pet-activity-factor" onchange="calculatePetEnergy()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm text-slate-800 font-semibold focus:ring-2 focus:ring-emerald-600/20 focus:border-emerald-700 focus:outline-none">
+                                            <option value="" data-req-id="">-- Pilih Status & Target --</option>
                                             <option value="1.6" data-req-id="2">Anjing: Dewasa Normal (1.6x RER)</option>
                                             <option value="2.0" data-req-id="2">Anjing: Dewasa Aktif (2.0x RER)</option>
                                             <option value="1.2" data-req-id="3">Anjing: Senior / Kurang Aktif (1.2x RER)</option>
@@ -175,6 +191,11 @@
                                             <option value="2.5" data-req-id="9">Kucing: Hamil (2.5x RER)</option>
                                             <option value="2.5" data-req-id="10">Kucing: Menyusui (2.5x RER)</option>
                                         </select>
+                                    </div>
+                                    <!-- Input Jumlah Hewan -->
+                                    <div>
+                                        <label for="pet-animal-count" class="block text-xs font-bold text-slate-600 mb-1">Jumlah Hewan (Ekor):</label>
+                                        <input type="number" id="pet-animal-count" value="1" min="1" oninput="calculatePetEnergy()" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-sm text-slate-800 font-bold focus:ring-2 focus:ring-emerald-600/20 focus:border-emerald-700 focus:outline-none">
                                     </div>
                                 </div>
                                 
@@ -190,8 +211,15 @@
                                     </div>
                                     <div>
                                         <p class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider">Rekomendasi Porsi</p>
-                                        <p id="pet-rec-feed-val" class="text-sm font-black text-emerald-700 mt-0.5 font-mono">0 Gram/hari</p>
+                                        <p id="pet-rec-feed-val" class="text-sm font-black text-emerald-750 mt-0.5 font-mono">0 Gram/hari</p>
                                     </div>
+                                </div>
+
+                                <div class="flex justify-end pt-1" id="rec-recipe-wrapper">
+                                    <button type="button" onclick="applyRecommendedRecipe()" id="btn-rec-recipe" class="hidden bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-sm hover:shadow transition-all flex items-center gap-1.5">
+                                        <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                                        Gunakan Resep Rekomendasi
+                                    </button>
                                 </div>
                             </div>
 
@@ -255,13 +283,17 @@
                                 <h2 id="step-3-title" class="text-lg font-bold text-slate-900">Hasil Formulasi dan Biaya</h2>
                             </div>
 
-                            <!-- Progress Bar for total percentage -->
+                            <!-- Progress Bar for total weight -->
                             <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-2">
                                 <div class="flex justify-between items-center text-sm font-bold">
-                                    <span class="text-slate-600">Total Persentase Campuran:</span>
-                                    <span id="total-percent-badge" class="px-2.5 py-0.5 rounded-lg bg-red-100 text-red-800 font-extrabold border border-red-200 text-base">0%</span>
+                                    <span id="total-percent-label" class="text-slate-600">Total berat Campuran:</span>
+                                    <span id="total-percent-badge" class="px-2.5 py-0.5 rounded-lg bg-red-100 text-red-800 font-extrabold border border-red-200 text-base">0 Gram</span>
                                 </div>
-                                <div class="w-full bg-slate-200 h-3 rounded-full overflow-hidden border border-slate-350">
+                                <div id="per-animal-weight-container" class="flex justify-between items-center text-xs font-semibold text-slate-550 border-t border-slate-150 pt-2 mt-1 hidden">
+                                    <span>Porsi per Ekor:</span>
+                                    <span id="per-animal-weight-val" class="font-bold text-slate-700">0 Gram</span>
+                                </div>
+                                <div class="w-full bg-slate-200 h-3 rounded-full overflow-hidden border border-slate-350 hidden">
                                     <div id="total-percent-bar" class="h-full bg-red-500 transition-all duration-200" style="width: 0%"></div>
                                 </div>
                                 <p id="total-percent-warning" class="text-xs text-red-850 font-bold bg-red-50 p-2.5 rounded-lg border border-red-200">
@@ -275,9 +307,12 @@
                                     <p class="text-xs font-bold text-emerald-800 uppercase tracking-wider">Harga Pakan per KG</p>
                                     <p id="cost-per-kg" class="text-2xl font-black text-slate-900 mt-1">Rp 0</p>
                                 </div>
-                                <div class="bg-slate-55 border border-slate-200 rounded-xl p-4 text-center shadow-xs">
+                                <div class="bg-slate-55 border border-slate-200 rounded-xl p-4 text-center shadow-xs space-y-1">
                                     <p class="text-xs font-bold text-slate-600 uppercase tracking-wider">Total Biaya Campuran</p>
                                     <p id="total-cost" class="text-2xl font-black text-emerald-700 mt-1">Rp 0</p>
+                                    <div id="per-animal-cost-wrapper" class="text-xs text-slate-500 font-bold border-t border-slate-200 pt-1.5 mt-1.5 hidden">
+                                        Biaya per Ekor: <span id="per-animal-cost-val" class="text-slate-800 font-extrabold font-mono">Rp 0</span>
+                                    </div>
                                 </div>
                             </div>
 
@@ -678,6 +713,8 @@
             selectedTernak = null;
             document.getElementById('select-ternak').value = "";
             document.getElementById('ternak-req-card').classList.add('hidden');
+            const ternakRecWrapper = document.getElementById('ternak-rec-recipe-wrapper');
+            if (ternakRecWrapper) ternakRecWrapper.classList.add('hidden');
             
             // Re-render layout structures
             renderTargetNutrientsCard();
@@ -696,7 +733,10 @@
             document.getElementById('input-weight').value = "0";
             
             // Update unit label
-            document.getElementById('weight-unit-label').innerText = mode === 'ternak' ? 'KG' : 'Gram';
+            const weightUnitLabel = document.getElementById('weight-unit-label');
+            if (weightUnitLabel) {
+                weightUnitLabel.innerText = mode === 'ternak' ? 'KG' : 'Gram';
+            }
 
             // Update th column header
             const thWeight = document.getElementById('th-weight-column');
@@ -720,10 +760,12 @@
             const petCalcContainer = document.getElementById('pet-energy-calculator-container');
             if (mode === 'ternak') {
                 petCalcContainer.classList.add('hidden');
+                document.getElementById('ternak-animal-count').value = "1";
             } else {
                 petCalcContainer.classList.remove('hidden');
-                document.getElementById('pet-body-weight').value = "5";
-                updateActivityFactorDropdown("");
+                document.getElementById('pet-body-weight').value = "0";
+                document.getElementById('pet-activity-factor').value = "";
+                document.getElementById('pet-animal-count').value = "1";
                 calculatePetEnergy();
             }
             
@@ -732,10 +774,10 @@
             const costSummaryContainer = document.getElementById('cost-summary-container');
             if (mode === 'ternak') {
                 step3Title.innerText = "Hasil Formulasi dan Biaya";
-                costSummaryContainer.style.display = '';
+                costSummaryContainer.classList.remove('hidden');
             } else {
                 step3Title.innerText = "Hasil Formulasi dan Timbangan";
-                costSummaryContainer.style.display = 'none';
+                costSummaryContainer.classList.add('hidden');
             }
             
             togglePriceColumns();
@@ -747,9 +789,9 @@
         function togglePriceColumns() {
             document.querySelectorAll('.price-column').forEach(el => {
                 if (currentMode === 'ternak') {
-                    el.style.display = '';
+                    el.classList.remove('hidden');
                 } else {
-                    el.style.display = 'none';
+                    el.classList.add('hidden');
                 }
             });
         }
@@ -760,15 +802,19 @@
             const weight = parseFloat(document.getElementById('pet-body-weight').value) || 0;
             const factorSelect = document.getElementById('pet-activity-factor');
             const factor = parseFloat(factorSelect.value) || 0;
+            const petCount = parseInt(document.getElementById('pet-animal-count').value) || 1;
 
             const selectedOpt = factorSelect.options[factorSelect.selectedIndex];
             const reqId = selectedOpt ? selectedOpt.getAttribute('data-req-id') : null;
             
             const card = document.getElementById('ternak-req-card');
+            const recBtn = document.getElementById('btn-rec-recipe');
+
             if (reqId) {
                 selectedTernak = petRequirements.find(t => t.id === reqId);
                 if (selectedTernak) {
                     card.classList.remove('hidden');
+                    if (recBtn && weight > 0) recBtn.classList.remove('hidden');
                     const keys = nutrientKeys[currentMode];
                     keys.forEach(n => {
                         const suffix = n.isKcal ? ' kcal/kg' : '%';
@@ -782,6 +828,7 @@
             } else {
                 selectedTernak = null;
                 card.classList.add('hidden');
+                if (recBtn) recBtn.classList.add('hidden');
                 resetTargets();
             }
 
@@ -789,42 +836,58 @@
                 document.getElementById('pet-rer-val').innerText = '0 kcal/hari';
                 document.getElementById('pet-mer-val').innerText = '0 kcal/hari';
                 document.getElementById('pet-rec-feed-val').innerText = '0 Gram/hari';
+                window.lastPetRecIntake = 0;
+                if (recBtn) recBtn.classList.add('hidden');
                 updateDailyPortionFeedback(0);
                 return;
             }
 
-            // RER = 70 * (weight ^ 0.75)
-            const rer = 70 * Math.pow(weight, 0.75);
-            const mer = rer * factor;
+            // RER = 70 * (weight ^ 0.75) * petCount
+            const rer = 70 * Math.pow(weight, 0.75) * petCount;
+            const mer = (70 * Math.pow(weight, 0.75) * factor) * petCount;
 
             document.getElementById('pet-rer-val').innerText = `${Math.round(rer)} kcal/hari`;
             document.getElementById('pet-mer-val').innerText = `${Math.round(mer)} kcal/hari`;
 
             let meVal = currentFeedMe;
-            if (meVal === null) {
+            if (meVal === null || meVal === 0) {
                 const resMeEl = document.getElementById('res-ME');
                 meVal = resMeEl ? parseFloat(resMeEl.innerText) : 0;
+            }
+
+            // Fallback to standard target ME of selected pet profile if formulation is empty/0
+            if (meVal === 0 && selectedTernak && selectedTernak.ME) {
+                meVal = parseFloat(selectedTernak.ME) || 0;
             }
 
             if (meVal > 0) {
                 const recIntake = (mer / meVal) * 1000;
                 document.getElementById('pet-rec-feed-val').innerText = `${Math.round(recIntake)} Gram/hari`;
+                window.lastPetRecIntake = Math.round(recIntake);
                 updateDailyPortionFeedback(recIntake);
             } else {
                 document.getElementById('pet-rec-feed-val').innerText = '0 Gram/hari';
+                window.lastPetRecIntake = 0;
                 updateDailyPortionFeedback(0);
             }
         }
 
         function updateDailyPortionFeedback(recIntake) {
             const warningText = document.getElementById('total-percent-warning');
+            const percentBadge = document.getElementById('total-percent-badge');
+            
             if (currentMode !== 'peliharaan') {
-                warningText.classList.add('hidden');
+                if (warningText) warningText.classList.add('hidden');
                 return;
             }
 
             const weightInput = parseFloat(document.getElementById('input-weight').value) || 0;
+            
+            // Set badge text
+            percentBadge.innerText = `${weightInput.toLocaleString('id-ID', { maximumFractionDigits: 1 })} Gram`;
+            
             if (weightInput === 0) {
+                percentBadge.className = "px-3 py-1 rounded-lg bg-red-100 text-red-800 font-extrabold border border-red-300 text-base shadow-xs";
                 warningText.innerText = "Silakan isi berat bahan pakan di Langkah 2.";
                 warningText.className = "text-xs text-slate-700 font-bold bg-slate-50 p-2.5 rounded-lg border border-slate-200";
                 warningText.classList.remove('hidden');
@@ -832,25 +895,37 @@
             }
 
             if (recIntake <= 0) {
+                percentBadge.className = "px-3 py-1 rounded-lg bg-red-100 text-red-800 font-extrabold border border-red-300 text-base shadow-xs";
                 warningText.innerText = "Kandungan Energi Metabolis (ME) campuran pakan Anda masih 0. Pastikan bahan pakan mengandung energi.";
                 warningText.className = "text-xs text-amber-800 font-bold bg-amber-50 p-2.5 rounded-lg border border-amber-250";
                 warningText.classList.remove('hidden');
                 return;
             }
 
-            const difference = weightInput - recIntake;
-            const pctDiff = Math.abs(difference) / recIntake;
+            const roundedWeight = Math.round(weightInput);
+            const roundedRec = Math.round(recIntake);
+            const difference = roundedWeight - roundedRec;
+            const pctDiff = roundedRec > 0 ? Math.abs(difference) / roundedRec : 0;
 
             warningText.classList.remove('hidden');
-            if (pctDiff <= 0.05) {
-                warningText.innerText = `Porsi Sesuai! Campuran Anda (${Math.round(weightInput)} Gram) pas untuk kebutuhan harian kucing/anjing Anda (${Math.round(recIntake)} Gram/hari).`;
-                warningText.className = "text-xs text-emerald-850 font-bold bg-emerald-50 p-2.5 rounded-lg border border-emerald-250";
-            } else if (difference < 0) {
-                warningText.innerText = `Porsi Kurang! Campuran Anda (${Math.round(weightInput)} Gram) kurang dari kebutuhan harian (${Math.round(recIntake)} Gram/hari). Kurang sekitar ${Math.round(Math.abs(difference))} Gram.`;
-                warningText.className = "text-xs text-amber-855 font-bold bg-amber-50 p-2.5 rounded-lg border border-amber-250";
+            
+            if (roundedWeight >= roundedRec || Math.abs(difference) <= 1) {
+                // Sesuai atau berlebih (mencukupi pakannya) -> Hijau
+                percentBadge.className = "px-3 py-1 rounded-lg bg-emerald-100 text-emerald-800 font-extrabold border border-emerald-300 text-base shadow-xs";
+                
+                if (pctDiff <= 0.05 || Math.abs(difference) <= 1) {
+                    warningText.innerText = `Porsi Sesuai! Campuran Anda (${roundedWeight} Gram) pas untuk kebutuhan harian kucing/anjing Anda (${roundedRec} Gram/hari).`;
+                    warningText.className = "text-xs text-emerald-850 font-bold bg-emerald-50 p-2.5 rounded-lg border border-emerald-250";
+                } else {
+                    warningText.innerText = `Porsi Berlebih! Campuran Anda (${roundedWeight} Gram) melebihi kebutuhan harian (${roundedRec} Gram/hari). Lebih sekitar ${difference} Gram.`;
+                    warningText.className = "text-xs text-blue-850 font-bold bg-blue-50 p-2.5 rounded-lg border border-blue-250";
+                }
             } else {
-                warningText.innerText = `Porsi Berlebih! Campuran Anda (${Math.round(weightInput)} Gram) melebihi kebutuhan harian (${Math.round(recIntake)} Gram/hari). Lebih sekitar ${Math.round(difference)} Gram.`;
-                warningText.className = "text-xs text-blue-850 font-bold bg-blue-50 p-2.5 rounded-lg border border-blue-250";
+                // Belum mencukupi -> Merah
+                percentBadge.className = "px-3 py-1 rounded-lg bg-red-100 text-red-800 font-extrabold border border-red-300 text-base shadow-xs";
+                
+                warningText.innerText = `Porsi Kurang! Campuran Anda (${roundedWeight} Gram) kurang dari kebutuhan harian (${roundedRec} Gram/hari). Kurang sekitar ${Math.abs(difference)} Gram.`;
+                warningText.className = "text-xs text-red-850 font-bold bg-red-50 p-2.5 rounded-lg border border-red-200";
             }
         }
 
@@ -1091,10 +1166,12 @@
 
             const val = document.getElementById('select-ternak').value;
             const card = document.getElementById('ternak-req-card');
+            const ternakRecWrapper = document.getElementById('ternak-rec-recipe-wrapper');
             
             if (!val) {
                 selectedTernak = null;
                 card.classList.add('hidden');
+                if (ternakRecWrapper) ternakRecWrapper.classList.add('hidden');
                 resetTargets();
                 calculateFeed();
                 return;
@@ -1102,6 +1179,7 @@
 
             selectedTernak = dataTernak.find(t => t.id === val);
             card.classList.remove('hidden');
+            if (ternakRecWrapper) ternakRecWrapper.classList.remove('hidden');
 
             // Set targets
             const keys = nutrientKeys[currentMode];
@@ -1198,6 +1276,81 @@
             calculateFeed();
         }
 
+        // Custom Searchable Dropdown Helpers
+        function toggleDropdown(index) {
+            document.querySelectorAll('.custom-select-container').forEach(container => {
+                const idx = container.id.split('-').pop();
+                if (parseInt(idx) !== index) {
+                    const otherDropdown = document.getElementById(`custom-select-dropdown-${idx}`);
+                    const otherArrow = document.getElementById(`custom-select-arrow-${idx}`);
+                    if (otherDropdown) otherDropdown.classList.add('hidden');
+                    if (otherArrow) otherArrow.classList.remove('rotate-180');
+                }
+            });
+            
+            const dropdown = document.getElementById(`custom-select-dropdown-${index}`);
+            const arrow = document.getElementById(`custom-select-arrow-${index}`);
+            if (!dropdown) return;
+            
+            const isOpen = !dropdown.classList.contains('hidden');
+            if (isOpen) {
+                dropdown.classList.add('hidden');
+                if (arrow) arrow.classList.remove('rotate-180');
+            } else {
+                dropdown.classList.remove('hidden');
+                if (arrow) arrow.classList.add('rotate-180');
+                const searchInput = dropdown.querySelector('input[type="text"]');
+                if (searchInput) {
+                    searchInput.value = '';
+                    filterDropdown(index, '');
+                    searchInput.focus();
+                }
+            }
+        }
+
+        function filterDropdown(index, query) {
+            const q = query.toLowerCase();
+            const optionsList = document.getElementById(`custom-select-options-${index}`);
+            if (!optionsList) return;
+            const items = optionsList.querySelectorAll('.option-item');
+            items.forEach(item => {
+                const text = item.innerText.toLowerCase();
+                if (text.includes(q)) {
+                    item.style.display = "flex";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
+
+        function selectOption(index, val, label) {
+            const valInput = document.getElementById(`custom-select-val-${index}`);
+            const labelSpan = document.getElementById(`custom-select-label-${index}`);
+            const dropdown = document.getElementById(`custom-select-dropdown-${index}`);
+            const arrow = document.getElementById(`custom-select-arrow-${index}`);
+            
+            if (valInput) valInput.value = val;
+            if (labelSpan) labelSpan.innerText = label;
+            
+            if (dropdown) dropdown.classList.add('hidden');
+            if (arrow) arrow.classList.remove('rotate-180');
+            
+            calculateFeed();
+        }
+
+        // Close dropdowns on clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.custom-select-container')) {
+                document.querySelectorAll('.custom-select-container').forEach(container => {
+                    const idx = container.id.split('-').pop();
+                    const dropdown = document.getElementById(`custom-select-dropdown-${idx}`);
+                    const arrow = document.getElementById(`custom-select-arrow-${idx}`);
+                    if (dropdown) dropdown.classList.add('hidden');
+                    if (arrow) arrow.classList.remove('rotate-180');
+                });
+            }
+        });
+
         function renderRows(count) {
             const container = document.getElementById('feed-rows-container');
             const currentRows = container.children.length;
@@ -1212,11 +1365,23 @@
                             <button type="button" onclick="showIngredientDetails(${i})" class="bg-slate-100 hover:bg-emerald-100 text-slate-700 hover:text-emerald-800 px-2.5 py-2 rounded-xl border border-slate-300 font-bold text-xs flex items-center gap-1 transition-colors" title="Lihat detail gizi">
                                 Info
                             </button>
-                            <select onchange="calculateFeed()" name="ingredient" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-800 font-semibold focus:border-emerald-700 focus:outline-none">
-                                <option value="">-- Pilih Bahan --</option>
-                            </select>
+                            <div class="relative custom-select-container w-full" id="custom-select-container-${i}">
+                                <button type="button" onclick="toggleDropdown(${i})" id="custom-select-btn-${i}" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-800 font-semibold focus:border-emerald-700 focus:outline-none flex justify-between items-center">
+                                    <span id="custom-select-label-${i}">-- Pilih Bahan --</span>
+                                    <svg class="w-4 h-4 text-slate-500 transition-transform duration-200" id="custom-select-arrow-${i}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </button>
+                                <input type="hidden" name="ingredient" id="custom-select-val-${i}">
+                                <div id="custom-select-dropdown-${i}" class="absolute z-[999] left-0 right-0 mt-1 hidden bg-white border border-slate-200 rounded-xl shadow-xl max-h-64 overflow-hidden flex flex-col">
+                                    <div class="p-2 border-b border-slate-100 bg-slate-50">
+                                        <input type="text" oninput="filterDropdown(${i}, this.value)" placeholder="Cari bahan..." class="w-full bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-emerald-600">
+                                    </div>
+                                    <div id="custom-select-options-${i}" class="overflow-y-auto max-h-48 text-sm text-slate-700 py-1">
+                                        <!-- options items populated dynamically -->
+                                    </div>
+                                </div>
+                            </div>
                         </td>
-                         <td class="py-3 px-2">
+                        <td class="py-3 px-2">
                             <input type="number" name="percentage" min="0" step="any" oninput="calculateFeed()" placeholder="0" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-900 font-bold focus:border-emerald-700 focus:outline-none text-center">
                         </td>
                         <td class="py-3 px-3 price-column">
@@ -1236,17 +1401,32 @@
         }
 
         function updateAllSelects() {
-            const selects = document.querySelectorAll('select[name="ingredient"]');
-            selects.forEach(select => {
-                const curVal = select.value;
-                select.innerHTML = '<option value="">-- Pilih Bahan --</option>';
+            const containers = document.querySelectorAll('.custom-select-container');
+            containers.forEach(container => {
+                const idx = container.id.split('-').pop();
+                const optionsDiv = document.getElementById(`custom-select-options-${idx}`);
+                const valInput = document.getElementById(`custom-select-val-${idx}`);
+                const labelSpan = document.getElementById(`custom-select-label-${idx}`);
                 
+                if (!optionsDiv) return;
+                
+                const curVal = valInput.value;
+                optionsDiv.innerHTML = '';
+                
+                // Add an option for unselecting
+                const emptyOption = document.createElement('div');
+                emptyOption.className = "option-item px-3 py-2 hover:bg-slate-100 cursor-pointer text-slate-500 font-medium text-xs";
+                emptyOption.innerText = "-- Pilih Bahan --";
+                emptyOption.onclick = () => selectOption(idx, "", "-- Pilih Bahan --");
+                optionsDiv.appendChild(emptyOption);
+
                 if (currentMode === 'ternak') {
                     dataBahan.forEach(item => {
-                        const opt = document.createElement('option');
-                        opt.value = item.id;
-                        opt.innerText = item.nama;
-                        select.appendChild(opt);
+                        const opt = document.createElement('div');
+                        opt.className = "option-item px-3 py-2 hover:bg-emerald-50 hover:text-emerald-900 cursor-pointer font-semibold flex justify-between items-center transition-colors";
+                        opt.innerHTML = `<span>${item.nama}</span>`;
+                        opt.onclick = () => selectOption(idx, item.id, item.nama);
+                        optionsDiv.appendChild(opt);
                     });
                 } else {
                     // Group by Kategori for Pet Mode
@@ -1259,36 +1439,54 @@
                     });
                     
                     for (let cat in categories) {
-                        const group = document.createElement('optgroup');
-                        group.label = cat;
+                        const catHeader = document.createElement('div');
+                        catHeader.className = "px-3 py-1 bg-slate-100 text-slate-600 font-bold text-[10px] uppercase tracking-wider";
+                        catHeader.innerText = cat;
+                        optionsDiv.appendChild(catHeader);
+
                         categories[cat].forEach(item => {
-                            const opt = document.createElement('option');
-                            opt.value = item.id;
-                            opt.innerText = item.nama;
-                            group.appendChild(opt);
+                            const opt = document.createElement('div');
+                            opt.className = "option-item pl-6 pr-3 py-2 hover:bg-emerald-50 hover:text-emerald-900 cursor-pointer font-semibold flex justify-between items-center transition-colors";
+                            opt.innerHTML = `<span>${item.nama}</span>`;
+                            opt.onclick = () => selectOption(idx, item.id, item.nama);
+                            optionsDiv.appendChild(opt);
                         });
-                        select.appendChild(group);
                     }
                 }
                 
-                if (curVal) select.value = curVal;
+                // Restore current selection label if present
+                if (curVal) {
+                    let found;
+                    if (currentMode === 'ternak') {
+                        found = dataBahan.find(b => b.id === curVal);
+                    } else {
+                        found = petIngredients.find(b => b.id === curVal);
+                    }
+                    if (found) {
+                        labelSpan.innerText = found.nama;
+                    } else {
+                        valInput.value = "";
+                        labelSpan.innerText = "-- Pilih Bahan --";
+                    }
+                } else {
+                    labelSpan.innerText = "-- Pilih Bahan --";
+                }
             });
         }
 
         // Show Details Modal
         function showIngredientDetails(rowIndex) {
-            const row = document.getElementById(`feed-row-${rowIndex}`);
-            const select = row.querySelector('select[name="ingredient"]');
-            if (!select.value) {
+            const valInput = document.getElementById(`custom-select-val-${rowIndex}`);
+            if (!valInput || !valInput.value) {
                 alert("Pilih bahan pakan terlebih dahulu.");
                 return;
             }
             
             let item;
             if (currentMode === 'ternak') {
-                item = dataBahan.find(b => b.id === select.value);
+                item = dataBahan.find(b => b.id === valInput.value);
             } else {
-                item = petIngredients.find(b => b.id === select.value);
+                item = petIngredients.find(b => b.id === valInput.value);
             }
             
             document.getElementById('modal-title').innerText = `Kandungan Gizi: ${item.nama}`;
@@ -1327,7 +1525,7 @@
             // Calculate total weight from ingredient inputs
             let totalInputWeight = 0;
             rows.forEach(row => {
-                const select = row.querySelector('select[name="ingredient"]');
+                const select = row.querySelector('input[name="ingredient"]');
                 const val = parseFloat(row.querySelector('input[name="percentage"]').value) || 0;
                 if (select && select.value) {
                     totalInputWeight += val;
@@ -1348,11 +1546,11 @@
             });
 
             rows.forEach(row => {
-                const select = row.querySelector('select[name="ingredient"]');
+                const select = row.querySelector('input[name="ingredient"]');
                 const inputWeightVal = parseFloat(row.querySelector('input[name="percentage"]').value) || 0;
                 const priceVal = parseFloat(row.querySelector('input[name="price"]').value) || 0;
 
-                if (select.value) {
+                if (select && select.value) {
                     let item;
                     if (currentMode === 'ternak') {
                         item = dataBahan.find(b => b.id === select.value);
@@ -1388,17 +1586,44 @@
             const warningText = document.getElementById('total-percent-warning');
             const unit = currentMode === 'ternak' ? 'KG' : 'Gram';
 
-            percentBadge.innerText = `${totalInputWeight.toLocaleString('id-ID', { maximumFractionDigits: 2 })} ${unit}`;
-            percentBadge.className = "px-3 py-1 rounded-lg bg-emerald-100 text-emerald-800 font-extrabold border border-emerald-300 text-base shadow-xs";
+            percentBadge.innerText = `${totalInputWeight.toLocaleString('id-ID', { maximumFractionDigits: 1 })} ${unit}`;
             
             if (currentMode === 'ternak') {
-                warningText.classList.add('hidden');
+                percentBadge.className = "px-3 py-1 rounded-lg bg-emerald-100 text-emerald-800 font-extrabold border border-emerald-300 text-base shadow-xs";
+                if (warningText) warningText.classList.add('hidden');
+            }
+
+            // Update per animal weight display
+            const ternakCount = parseInt(document.getElementById('ternak-animal-count').value) || 1;
+            const petCount = parseInt(document.getElementById('pet-animal-count').value) || 1;
+            const animalCount = currentMode === 'ternak' ? ternakCount : petCount;
+            const perAnimalWeightContainer = document.getElementById('per-animal-weight-container');
+            const perAnimalWeightVal = document.getElementById('per-animal-weight-val');
+            
+            if (animalCount > 1 && totalInputWeight > 0) {
+                const perAnimalWeight = totalInputWeight / animalCount;
+                if (perAnimalWeightVal) perAnimalWeightVal.innerText = `${perAnimalWeight.toLocaleString('id-ID', { maximumFractionDigits: 1 })} ${unit}`;
+                if (perAnimalWeightContainer) perAnimalWeightContainer.classList.remove('hidden');
+            } else {
+                if (perAnimalWeightContainer) perAnimalWeightContainer.classList.add('hidden');
             }
 
             // Update Cost Display
             document.getElementById('total-cost').innerText = `Rp ${totalCost.toLocaleString('id-ID', { maximumFractionDigits: 0 })}`;
             const costPerKg = totalKg > 0 ? (totalCost / totalKg) : 0;
             document.getElementById('cost-per-kg').innerText = `Rp ${costPerKg.toLocaleString('id-ID', { maximumFractionDigits: 0 })}`;
+
+            // Update per animal cost display
+            const perAnimalCostWrapper = document.getElementById('per-animal-cost-wrapper');
+            const perAnimalCostVal = document.getElementById('per-animal-cost-val');
+            
+            if (currentMode === 'ternak' && animalCount > 1 && totalCost > 0) {
+                const perAnimalCost = totalCost / animalCount;
+                if (perAnimalCostVal) perAnimalCostVal.innerText = `Rp ${perAnimalCost.toLocaleString('id-ID', { maximumFractionDigits: 0 })}`;
+                if (perAnimalCostWrapper) perAnimalCostWrapper.classList.remove('hidden');
+            } else {
+                if (perAnimalCostWrapper) perAnimalCostWrapper.classList.add('hidden');
+            }
 
             // Update Composition Breakdown List
             const breakdownContainer = document.getElementById('breakdown-container');
@@ -1436,8 +1661,25 @@
 
                 if (selectedTernak) {
                     const diffStr = n.isKcal ? `${difference.toFixed(0)} kcal/kg` : `${difference.toFixed(2)}%`;
-                    if (difference >= 0) {
-                        diffEl.innerText = `Cukup (+${diffStr})`;
+                    
+                    let isSufficient = difference >= 0;
+                    if (currentMode === 'peliharaan' && n.key === 'Air') {
+                        isSufficient = true;
+                    }
+                    if (currentMode === 'ternak') {
+                        let tolerance = 0;
+                        if (n.key === 'BK') tolerance = 0.25 * targetVal;
+                        else if (n.key === 'Abu') tolerance = 0.30 * targetVal;
+                        else tolerance = 0.10 * targetVal;
+                        
+                        if (difference >= -tolerance) {
+                            isSufficient = true;
+                        }
+                    }
+
+                    if (isSufficient) {
+                        const showDiff = difference >= 0 ? `+${diffStr}` : diffStr;
+                        diffEl.innerText = `Cukup (${showDiff})`;
                         diffEl.className = "px-2 py-1 rounded bg-emerald-100 text-emerald-800 font-bold border border-emerald-300 text-xs block text-center shadow-xs";
                     } else {
                         diffEl.innerText = `Kurang (${diffStr})`;
@@ -1452,6 +1694,266 @@
             if (currentMode === 'peliharaan') {
                 calculatePetEnergy(mixNutrients['ME']);
             }
+        }
+
+        function applyRecommendedRecipe() {
+            if (currentMode !== 'peliharaan') return;
+            if (!selectedTernak) {
+                alert("Pilih Status & Target Gizi terlebih dahulu.");
+                return;
+            }
+
+            const weight = parseFloat(document.getElementById('pet-body-weight').value) || 0;
+            const factorSelect = document.getElementById('pet-activity-factor');
+            const factor = parseFloat(factorSelect.value) || 0;
+
+            if (weight <= 0 || factor <= 0) {
+                alert("Masukkan berat badan hewan dan pilih status gizi terlebih dahulu.");
+                return;
+            }
+
+            const reqId = selectedTernak.id;
+            let recipe = [];
+            
+            if (reqId === "1" || reqId === "4" || reqId === "2") {
+                // Anjing - Puppy, Anjing - Hamil, Anjing - Dewasa
+                recipe = [
+                    { name: 'OAT', pct: 50 },
+                    { name: 'TEPUNG IKAN', pct: 35 },
+                    { name: 'MINYAK IKAN', pct: 11 },
+                    { name: 'TEPUNG TULANG', pct: 3 },
+                    { name: 'PREMIX VITAMIN MINERAL', pct: 1 }
+                ];
+            } else if (reqId === "3") {
+                // Anjing - Senior
+                recipe = [
+                    { name: 'OAT', pct: 60 },
+                    { name: 'TEPUNG IKAN', pct: 30 },
+                    { name: 'MINYAK IKAN', pct: 6 },
+                    { name: 'TEPUNG TULANG', pct: 3 },
+                    { name: 'PREMIX VITAMIN MINERAL', pct: 1 }
+                ];
+            } else if (reqId === "5") {
+                // Anjing - Menyusui
+                recipe = [
+                    { name: 'OAT', pct: 50 },
+                    { name: 'TEPUNG IKAN', pct: 35 },
+                    { name: 'MINYAK IKAN', pct: 12 },
+                    { name: 'TEPUNG TULANG', pct: 2 },
+                    { name: 'PREMIX VITAMIN MINERAL', pct: 1 }
+                ];
+            } else if (reqId === "6" || reqId === "7" || reqId === "9") {
+                // Kucing - Kitten, Kucing - Dewasa, Kucing - Hamil
+                recipe = [
+                    { name: 'OAT', pct: 30 },
+                    { name: 'TEPUNG IKAN', pct: 50 },
+                    { name: 'MINYAK IKAN', pct: 16 },
+                    { name: 'TEPUNG TULANG', pct: 3 },
+                    { name: 'PREMIX VITAMIN MINERAL', pct: 1 }
+                ];
+            } else if (reqId === "8") {
+                // Kucing - Senior
+                recipe = [
+                    { name: 'OAT', pct: 40 },
+                    { name: 'TEPUNG IKAN', pct: 45 },
+                    { name: 'MINYAK IKAN', pct: 11 },
+                    { name: 'TEPUNG TULANG', pct: 3 },
+                    { name: 'PREMIX VITAMIN MINERAL', pct: 1 }
+                ];
+            } else if (reqId === "10") {
+                // Kucing - Menyusui
+                recipe = [
+                    { name: 'OAT', pct: 30 },
+                    { name: 'TEPUNG IKAN', pct: 50 },
+                    { name: 'MINYAK IKAN', pct: 18 },
+                    { name: 'TEPUNG TULANG', pct: 1 },
+                    { name: 'PREMIX VITAMIN MINERAL', pct: 1 }
+                ];
+            }
+
+            // Pre-calculate exact recipe ME dynamically
+            let recipeME = 0;
+            recipe.forEach(recItem => {
+                const foundIng = petIngredients.find(ing => ing.nama.toUpperCase() === recItem.name.toUpperCase());
+                if (foundIng) {
+                    recipeME += (parseFloat(foundIng.ME) || 0) * (recItem.pct / 100);
+                }
+            });
+
+            // Calculate precise required daily portion based on the exact recipe ME
+            const petCount = parseInt(document.getElementById('pet-animal-count').value) || 1;
+            const rer = 70 * Math.pow(weight, 0.75);
+            const mer = rer * factor;
+            let exactRecIntake = 0;
+            if (recipeME > 0) {
+                exactRecIntake = (mer / recipeME) * 1000 * petCount;
+            }
+
+            if (exactRecIntake <= 0) {
+                alert("Gagal menghitung rekomendasi porsi.");
+                return;
+            }
+
+            const elRows = document.getElementById('input-rows');
+            elRows.value = recipe.length.toString();
+            document.getElementById('label-row-count').innerText = `${recipe.length} Bahan`;
+            renderRows(recipe.length);
+
+            const rows = document.querySelectorAll('#feed-rows-container tr');
+            let sumRounded = 0;
+            recipe.forEach((recItem, idx) => {
+                if (idx >= rows.length) return;
+                
+                const row = rows[idx];
+                
+                const foundIng = petIngredients.find(ing => ing.nama.toUpperCase() === recItem.name.toUpperCase());
+                if (foundIng) {
+                    const valInput = document.getElementById(`custom-select-val-${idx}`);
+                    const labelSpan = document.getElementById(`custom-select-label-${idx}`);
+                    if (valInput) valInput.value = foundIng.id;
+                    if (labelSpan) labelSpan.innerText = foundIng.nama;
+                }
+                
+                let weightGram = 0;
+                if (idx === recipe.length - 1) {
+                    weightGram = Math.round(exactRecIntake) - sumRounded;
+                } else {
+                    weightGram = Math.round((recItem.pct / 100) * exactRecIntake);
+                    sumRounded += weightGram;
+                }
+
+                const weightInput = row.querySelector('input[name="percentage"]');
+                if (weightInput) {
+                    weightInput.value = weightGram;
+                }
+            });
+
+            calculateFeed();
+        }
+
+        function applyTernakRecommendedRecipe() {
+            if (currentMode !== 'ternak') return;
+            if (!selectedTernak) {
+                alert("Pilih Jenis Ternak terlebih dahulu.");
+                return;
+            }
+
+            const reqId = selectedTernak.id;
+            let recipe = [];
+
+            // Scientifically formulated cost-efficient recipes that exceed all nutrient targets
+            if (reqId === "1") { // Sapi Perah Pemula 1 (PK 21%, Ca 0.8%, TDN 94%)
+                recipe = [
+                    { name: 'KOTORAN ULAT HONGKONG', pct: 60 },
+                    { name: 'PROMIX', pct: 25 },
+                    { name: 'DAUN KETELA POHON', pct: 15 }
+                ];
+            } else if (reqId === "5" || reqId === "17") { // Sapi/Kambing Perah Laktasi Prod Tinggi (PK 18%, Ca 1.1%, TDN 75%)
+                recipe = [
+                    { name: 'DAUN KETELA POHON', pct: 40 },
+                    { name: 'BUNGKIL KEDELE', pct: 20 },
+                    { name: 'PROMIX', pct: 15 },
+                    { name: 'KOTORAN ULAT HONGKONG', pct: 15 },
+                    { name: 'BUNGKIL KELAPA', pct: 10 }
+                ];
+            } else if (reqId === "2" || reqId === "14") { // Sapi/Kambing Perah Pemula 2 (PK 16%, Ca 0.5%, TDN 78%)
+                recipe = [
+                    { name: 'BUNGKIL KELAPA', pct: 25 },
+                    { name: 'BUNGKIL KEDELE', pct: 25 },
+                    { name: 'DAUN KETELA POHON', pct: 20 },
+                    { name: 'KOTORAN ULAT HONGKONG', pct: 20 },
+                    { name: 'AMPAS KELAPA', pct: 10 }
+                ];
+            } else if (reqId === "3" || reqId === "15") { // Sapi/Kambing Perah Dara (PK 15%, Ca 0.7%, TDN 75%)
+                recipe = [
+                    { name: 'DAUN KETELA POHON', pct: 30 },
+                    { name: 'BUNGKIL KEDELE', pct: 25 },
+                    { name: 'BUNGKIL KELAPA', pct: 20 },
+                    { name: 'KOTORAN ULAT HONGKONG', pct: 15 },
+                    { name: 'AMPAS KELAPA', pct: 10 }
+                ];
+            } else if (reqId === "4" || reqId === "16") { // Sapi/Kambing Perah Laktasi (PK 16%, Ca 0.9%, TDN 70%)
+                recipe = [
+                    { name: 'DAUN KETELA POHON', pct: 35 },
+                    { name: 'BUNGKIL KEDELE', pct: 25 },
+                    { name: 'BUNGKIL KELAPA', pct: 20 },
+                    { name: 'AMPAS KELAPA', pct: 10 },
+                    { name: 'BEKATUL', pct: 10 }
+                ];
+            } else if (reqId === "8" || reqId === "11" || reqId === "20") { // Sapi/Kambing/Domba Potong Penggemukan (PK 13%, Ca 0.9%, TDN 70%)
+                recipe = [
+                    { name: 'DAUN KETELA POHON', pct: 40 },
+                    { name: 'BUNGKIL KELAPA', pct: 20 },
+                    { name: 'BUNGKIL KEDELE', pct: 15 },
+                    { name: 'AMPAS KELAPA', pct: 15 },
+                    { name: 'BEKATUL', pct: 10 }
+                ];
+            } else if (reqId === "6" || reqId === "18") { // Sapi/Kambing Perah Kering Bunting (PK 14%, Ca 0.7%, TDN 65%)
+                recipe = [
+                    { name: 'DAUN KETELA POHON', pct: 30 },
+                    { name: 'BUNGKIL KELAPA', pct: 25 },
+                    { name: 'AMPAS KELAPA', pct: 20 },
+                    { name: 'BEKATUL', pct: 15 },
+                    { name: 'BUNGKIL KEDELE', pct: 10 }
+                ];
+            } else if (reqId === "7" || reqId === "10" || reqId === "13" || reqId === "19" || reqId === "22") { // Sapi/Kambing/Domba Pejantan (PK 12%, Ca 0.6%, TDN 65%)
+                recipe = [
+                    { name: 'DAUN KETELA POHON', pct: 30 },
+                    { name: 'BUNGKIL KELAPA', pct: 25 },
+                    { name: 'BEKATUL', pct: 25 },
+                    { name: 'AMPAS KELAPA', pct: 10 },
+                    { name: 'BUNGKIL KEDELE', pct: 10 }
+                ];
+            } else { // Default / Induk Potong (PK 14%, Ca 0.9%, TDN 65%)
+                recipe = [
+                    { name: 'DAUN KETELA POHON', pct: 35 },
+                    { name: 'BUNGKIL KELAPA', pct: 20 },
+                    { name: 'BUNGKIL KEDELE', pct: 15 },
+                    { name: 'AMPAS KELAPA', pct: 15 },
+                    { name: 'BEKATUL', pct: 15 }
+                ];
+            }
+
+            const elRows = document.getElementById('input-rows');
+            elRows.value = recipe.length.toString();
+            document.getElementById('label-row-count').innerText = `${recipe.length} Bahan`;
+            renderRows(recipe.length);
+
+            const rows = document.querySelectorAll('#feed-rows-container tr');
+            recipe.forEach((recItem, idx) => {
+                if (idx >= rows.length) return;
+                
+                const row = rows[idx];
+                
+                const foundIng = dataBahan.find(ing => ing.nama.toUpperCase() === recItem.name.toUpperCase());
+                if (foundIng) {
+                    const valInput = document.getElementById(`custom-select-val-${idx}`);
+                    const labelSpan = document.getElementById(`custom-select-label-${idx}`);
+                    if (valInput) valInput.value = foundIng.id;
+                    if (labelSpan) labelSpan.innerText = foundIng.nama;
+                }
+                
+                const weightInput = row.querySelector('input[name="percentage"]');
+                if (weightInput) {
+                    weightInput.value = recItem.pct;
+                }
+
+                const priceInput = row.querySelector('input[name="price"]');
+                if (priceInput && (!priceInput.value || parseFloat(priceInput.value) === 0)) {
+                    let priceVal = 0;
+                    if (recItem.name === 'AMPAS KELAPA') priceVal = 1500;
+                    else if (recItem.name === 'BEKATUL') priceVal = 3000;
+                    else if (recItem.name === 'BUNGKIL KEDELE') priceVal = 8500;
+                    else if (recItem.name === 'BUNGKIL KELAPA') priceVal = 4000;
+                    else if (recItem.name === 'DAUN KETELA POHON') priceVal = 1000;
+                    else if (recItem.name === 'LAMTORO') priceVal = 1200;
+                    else if (recItem.name === 'KOTORAN ULAT HONGKONG') priceVal = 12000;
+                    else if (recItem.name === 'PROMIX') priceVal = 5000;
+                    priceInput.value = priceVal;
+                }
+            });
+
+            calculateFeed();
         }
     </script>
 </body>
