@@ -233,7 +233,7 @@
                                     <thead>
                                         <tr class="bg-slate-55 border-b border-slate-200 text-xs font-bold text-slate-600 uppercase">
                                             <th class="py-3 px-3 w-1/2">Nama Bahan Pakan</th>
-                                            <th class="py-3 px-2 w-28 text-center">Porsi (%)</th>
+                                            <th id="th-weight-column" class="py-3 px-2 w-28 text-center">Porsi (%)</th>
                                             <th class="py-3 px-3 w-36 price-column">Harga (Rp/Kg)</th>
                                         </tr>
                                     </thead>
@@ -732,10 +732,10 @@
             const costSummaryContainer = document.getElementById('cost-summary-container');
             if (mode === 'ternak') {
                 step3Title.innerText = "Hasil Formulasi dan Biaya";
-                costSummaryContainer.classList.remove('hidden');
+                costSummaryContainer.style.display = '';
             } else {
                 step3Title.innerText = "Hasil Formulasi dan Timbangan";
-                costSummaryContainer.classList.add('hidden');
+                costSummaryContainer.style.display = 'none';
             }
             
             togglePriceColumns();
@@ -747,9 +747,9 @@
         function togglePriceColumns() {
             document.querySelectorAll('.price-column').forEach(el => {
                 if (currentMode === 'ternak') {
-                    el.classList.remove('hidden');
+                    el.style.display = '';
                 } else {
-                    el.classList.add('hidden');
+                    el.style.display = 'none';
                 }
             });
         }
@@ -1216,8 +1216,8 @@
                                 <option value="">-- Pilih Bahan --</option>
                             </select>
                         </td>
-                        <td class="py-3 px-2">
-                            <input type="number" name="percentage" min="0" max="100" step="any" oninput="calculateFeed()" placeholder="0" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-900 font-bold focus:border-emerald-700 focus:outline-none text-center">
+                         <td class="py-3 px-2">
+                            <input type="number" name="percentage" min="0" step="any" oninput="calculateFeed()" placeholder="0" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-900 font-bold focus:border-emerald-700 focus:outline-none text-center">
                         </td>
                         <td class="py-3 px-3 price-column">
                             <input type="number" name="price" min="0" step="any" oninput="calculateFeed()" placeholder="0" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-900 font-bold focus:border-emerald-700 focus:outline-none">
